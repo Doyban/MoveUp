@@ -1,10 +1,10 @@
-## 1. Install dependencies :
+## 1. Install dependencies:
 
 Navigate to the project repo directory.
 
 Run:
 
-```npm install``` 
+```npm install```
 
 assuming node installed in PC.
 
