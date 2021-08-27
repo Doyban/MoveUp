@@ -17,6 +17,7 @@ export default class Boot extends Phaser.State {
    */
   preload() {
     this.load.atlasXML('guisheet', './assets/images/yellowSheet.png', './assets/xml/yellowSheet.xml');
+    this.load.atlasXML('uiicons', './assets/images/sheet_black1x.png', './assets/xml/sheet_black1x.xml');
     this.load.audio('background', ['./assets/audio/background.mp3', './assets/audio/background.ogg']);
     this.load.audio('buttonDown', ['./assets/audio/button_down.mp3', './assets/audio/button_down.ogg']);
     this.load.audio('buttonHover', ['./assets/audio/button_hover.mp3', './assets/audio/button_hover.ogg']);

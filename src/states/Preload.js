@@ -26,6 +26,8 @@ export default class Preload extends Phaser.State {
     this.load.image('gameBackgroundTile', './assets/images/gameBackgroundTile.png');
     this.load.image('retryButton', './assets/images/retryButton.png');
     this.load.image('tile', './assets/images/tile.png');
+    this.load.image('musicoff', './assets/images/musicOff.png');
+    this.load.image('musicon', './assets/images/musicOn.png');
     this.load.image('transparentBackground', './assets/images/transparentBackground.png');
   }
 
@@ -52,6 +54,7 @@ export default class Preload extends Phaser.State {
     this.addAudioFiles();
     this.createPlayButton();
     this.createPlayText();
+    this.createUiButtons();
   }
 
   /**
@@ -90,6 +93,21 @@ export default class Preload extends Phaser.State {
   }
 
   /**
+   * @function createUiButtons
+   * @description Creates UI buttons.
+   */
+   createUiButtons() {
+     this.shopButton = this.add.button(this.world.centerX - 170, this.world.centerY + 100, 'guisheet', this._onShopButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.shopButtonIcon = this.add.image(this.world.centerX - 170, this.world.centerY + 100, 'uiicons', "cart.png");
+     this.shareButton = this.add.button(this.world.centerX - 70 , this.world.centerY + 100, 'guisheet', this._onShareButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.shareButtonIcon = this.add.image(this.world.centerX - 70 , this.world.centerY + 100, 'uiicons', "share2.png");
+     this.loginButton = this.add.button(this.world.centerX + 30, this.world.centerY + 100, 'guisheet', this._onLoginButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.loginButtonIcon = this.add.image(this.world.centerX + 30, this.world.centerY + 100, 'uiicons', "singleplayer.png");
+     this.friendsButton = this.add.button(this.world.centerX + 130, this.world.centerY + 100, 'guisheet', this._onFriendsButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.friendsButtonIcon = this.add.image(this.world.centerX + 130, this.world.centerY + 100, 'uiicons', "multiplayer.png");
+  }
+
+  /**
    * @function _onPlayButton
    * @description Listen on input down of play button and perform necessary actions if it occurs.
    */
@@ -97,6 +115,38 @@ export default class Preload extends Phaser.State {
     this.backgroundTiles.length = 0;
     this.buttonDownAudio.play();
     this.playButton.kill();
+  }
+
+  /**
+   * @function _onShopButton
+   * @description Listen on input down of shop button and perform necessary actions if it occurs.
+   */
+   _onShopButton() {
+     console.log("shop button down");
+  }
+
+  /**
+   * @function _onShareButton
+   * @description Listen on input down of share button and perform necessary actions if it occurs.
+   */
+   _onShareButton() {
+     console.log("share button down");
+  }
+
+  /**
+   * @function _onLoginButton
+   * @description Listen on input down of login button and perform necessary actions if it occurs.
+   */
+   _onLoginButton() {
+     console.log("login button down");
+  }
+
+  /**
+   * @function _onFriendsButton
+   * @description Listen on input down of friends button and perform necessary actions if it occurs.
+   */
+   _onFriendsButton() {
+     console.log("friends button down");
   }
 
   /**

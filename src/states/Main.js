@@ -84,6 +84,9 @@ export default class Main extends Phaser.State {
     this.cursors = this.input.keyboard.createCursorKeys(); // Enable cursor keys to enable controls.
     this.virtualJoyStick = this.game.plugins.add(Phaser.VirtualJoystick); // Add virtual joystick.
 
+    // create music button
+    this.createMusicOnButton();
+    this.createMusicOffButton();
     // Create mobile controls.
     // TODO: Remove it for desktop deployments.
     this.createVirtualJoystick();
@@ -329,5 +332,51 @@ export default class Main extends Phaser.State {
    */
   playerMovingAnimation() {
     this.player.animations.play('move', 10);
+  }
+
+  /**
+   * @function createMusicOnButton
+   * @description creates music on button
+   */
+  createMusicOnButton(){
+    this.musicOnButton = this.add.button(this.world.width - 100, 50, "guisheet", this._onMusicOnButtonDown, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.musicOnButtonIcon = this.add.image(this.world.width - 100, 50, "musicon");
+    
+
+  }
+  
+  /**
+   * @function createMusicOffButton
+   * @description creates music on button
+   */
+  createMusicOffButton(){
+    this.musicOffButton = this.add.button(this.world.width - 100, 50, "guisheet", this._onMusicOffButtonDown, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.musicOffButtonIcon = this.add.image(this.world.width - 100, 50,"musicoff");
+    this.musicOffButton.visible = false;
+    this.musicOffButtonIcon.visible = false;
+  }
+
+  /**
+   * @function _onMusicOnButtonDown
+   * @description Listen on input down of music on button and perform necessary actions if it occurs.
+   */
+  _onMusicOnButtonDown(){
+    this.sound.mute = true;
+    this.musicOnButton.visible = false;
+    this.musicOnButtonIcon.visible = false;
+    this.musicOffButton.visible = true;
+    this.musicOffButtonIcon.visible = true;
+  }
+
+  /**
+   * @function _onMusicOffButtonDown
+   * @description Listen on input down of music off button and perform necessary actions if it occurs.
+   */
+   _onMusicOffButtonDown(){
+     this.sound.mute = false;
+    this.musicOnButton.visible = true;
+    this.musicOnButtonIcon.visible = true;
+    this.musicOffButton.visible = false;
+    this.musicOffButtonIcon.visible = false;
   }
 }
