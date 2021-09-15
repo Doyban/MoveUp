@@ -2,6 +2,8 @@ import {
   styleForPlayText
 } from '../helpers/gameConstants';
 
+export const UI_SCALE_FACTOR = 2;
+
 /**
  * @class Preload
  * @description Preload necessary assets and create basic graphics to start the game.
@@ -97,15 +99,22 @@ export default class Preload extends Phaser.State {
    * @description Creates UI buttons.
    */
    createUiButtons() {
-     this.shopButton = this.add.button(this.world.centerX - 170, this.world.centerY + 100, 'guisheet', this._onShopButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.shopButtonIcon = this.add.image(this.world.centerX - 170, this.world.centerY + 100, 'uiicons', "cart.png");
-     this.shareButton = this.add.button(this.world.centerX - 70 , this.world.centerY + 100, 'guisheet', this._onShareButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.shareButtonIcon = this.add.image(this.world.centerX - 70 , this.world.centerY + 100, 'uiicons', "share2.png");
-     this.loginButton = this.add.button(this.world.centerX + 30, this.world.centerY + 100, 'guisheet', this._onLoginButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.loginButtonIcon = this.add.image(this.world.centerX + 30, this.world.centerY + 100, 'uiicons', "singleplayer.png");
-     this.friendsButton = this.add.button(this.world.centerX + 130, this.world.centerY + 100, 'guisheet', this._onFriendsButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.friendsButtonIcon = this.add.image(this.world.centerX + 130, this.world.centerY + 100, 'uiicons', "multiplayer.png");
-  }
+     this.shopButton = this.add.button(this.world.centerX - 290, this.world.centerY + 150, 'guisheet', this._onShopButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.shopButtonIcon = this.add.image(this.world.centerX - 290, this.world.centerY + 150, 'uiicons', "cart.png");
+     this.shopButton.scale.x = this.shopButton.scale.y = this.shopButtonIcon.scale.x = this.shopButtonIcon.scale.y = UI_SCALE_FACTOR;
+     this.shareButton = this.add.button(this.world.centerX - 130 , this.world.centerY + 150, 'guisheet', this._onShareButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.shareButtonIcon = this.add.image(this.world.centerX - 130 , this.world.centerY + 150, 'uiicons', "share2.png");
+     this.shareButton.scale.x = this.shareButton.scale.y = this.shareButtonIcon.scale.x = this.shareButtonIcon.scale.y = UI_SCALE_FACTOR;
+     this.loginButton = this.add.button(this.world.centerX + 40, this.world.centerY + 150, 'guisheet', this._onLoginButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.loginButtonIcon = this.add.image(this.world.centerX + 40, this.world.centerY + 150, 'uiicons', "singleplayer.png");
+     this.loginButton.scale.x = this.loginButton.scale.y = this.loginButtonIcon.scale.x = this.loginButtonIcon.scale.y = UI_SCALE_FACTOR;
+     this.friendsButton = this.add.button(this.world.centerX + 210, this.world.centerY + 150, 'guisheet', this._onFriendsButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.friendsButtonIcon = this.add.image(this.world.centerX + 210, this.world.centerY + 150, 'uiicons', "multiplayer.png");
+     this.friendsButton.scale.x = this.friendsButton.scale.y = this.friendsButtonIcon.scale.x = this.friendsButtonIcon.scale.y = UI_SCALE_FACTOR;
+     this.closeButton = this.add.button(this.world.width - 120, 20, 'guisheet', this._onCloseButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+     this.closeButtonIcon = this.add.image(this.world.width - 120, 20, 'uiicons', "cross.png");
+     this.closeButton.scale.x = this.closeButton.scale.y = this.closeButtonIcon.scale.x = this.closeButtonIcon.scale.y = UI_SCALE_FACTOR;
+    }
 
   /**
    * @function _onPlayButton
@@ -122,7 +131,7 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of shop button and perform necessary actions if it occurs.
    */
    _onShopButton() {
-     console.log("shop button down");
+     alert("shop button down");
   }
 
   /**
@@ -130,7 +139,7 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of share button and perform necessary actions if it occurs.
    */
    _onShareButton() {
-     console.log("share button down");
+     alert("share button down");
   }
 
   /**
@@ -138,7 +147,7 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of login button and perform necessary actions if it occurs.
    */
    _onLoginButton() {
-     console.log("login button down");
+     alert("login button down");
   }
 
   /**
@@ -146,8 +155,16 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of friends button and perform necessary actions if it occurs.
    */
    _onFriendsButton() {
-     console.log("friends button down");
+     alert("friends button down");
   }
+
+    /**
+   * @function _onCloseButton
+   * @description Listen on input down of close button and perform necessary actions if it occurs.
+   */
+     _onCloseButton() {
+      alert("close button down");
+   }
 
   /**
    * @function _onInputHover playing the music onInput Hover

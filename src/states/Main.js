@@ -4,6 +4,7 @@ import {
   platformSpeed
 } from '../helpers/gameConstants';
 import GameOver from '../components/GameOver.js';
+import { UI_SCALE_FACTOR } from './Preload';
 
 /**
  * @class Main
@@ -87,6 +88,8 @@ export default class Main extends Phaser.State {
     // create music button
     this.createMusicOnButton();
     this.createMusicOffButton();
+    
+    this._checkMusicState();
     // Create mobile controls.
     // TODO: Remove it for desktop deployments.
     this.createVirtualJoystick();
@@ -339,10 +342,9 @@ export default class Main extends Phaser.State {
    * @description creates music on button
    */
   createMusicOnButton(){
-    this.musicOnButton = this.add.button(this.world.width - 100, 50, "guisheet", this._onMusicOnButtonDown, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-    this.musicOnButtonIcon = this.add.image(this.world.width - 100, 50, "musicon");
-    
-
+    this.musicOnButton = this.add.button(this.world.width - 120, 30, "guisheet", this._onMusicOnButtonDown, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.musicOnButtonIcon = this.add.image(this.world.width - 120, 30, "musicon");
+    this.musicOnButton.scale.x = this.musicOnButton.scale.y = this.musicOnButtonIcon.scale.x = this.musicOnButtonIcon.scale.y = UI_SCALE_FACTOR;
   }
   
   /**
@@ -350,8 +352,9 @@ export default class Main extends Phaser.State {
    * @description creates music on button
    */
   createMusicOffButton(){
-    this.musicOffButton = this.add.button(this.world.width - 100, 50, "guisheet", this._onMusicOffButtonDown, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-    this.musicOffButtonIcon = this.add.image(this.world.width - 100, 50,"musicoff");
+    this.musicOffButton = this.add.button(this.world.width - 120, 30, "guisheet", this._onMusicOffButtonDown, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.musicOffButtonIcon = this.add.image(this.world.width - 120, 30,"musicoff");
+    this.musicOffButton.scale.x = this.musicOffButton.scale.y = this.musicOffButtonIcon.scale.x = this.musicOffButtonIcon.scale.y = UI_SCALE_FACTOR;
     this.musicOffButton.visible = false;
     this.musicOffButtonIcon.visible = false;
   }
@@ -378,5 +381,17 @@ export default class Main extends Phaser.State {
     this.musicOnButtonIcon.visible = true;
     this.musicOffButton.visible = false;
     this.musicOffButtonIcon.visible = false;
+  }
+
+  /**
+   * @function _checkMusicState
+   * @description will check the last state of the music buttons and do relavent action.
+   */
+   _checkMusicState(){
+     if (this.sound.mute) {
+       this._onMusicOnButtonDown();
+     } else {
+       this._onMusicOffButtonDown();
+     }
   }
 }
