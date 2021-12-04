@@ -1,3 +1,4 @@
+import { Shop } from '../components/Shop';
 import {
   styleForPlayText
 } from '../helpers/gameConstants';
@@ -15,6 +16,7 @@ export default class Preload extends Phaser.State {
    */
   constructor() {
     super();
+    this.isShopOpened = false;
   }
 
   /**
@@ -114,6 +116,7 @@ export default class Preload extends Phaser.State {
      this.closeButton = this.add.button(this.world.width - 120, 20, 'guisheet', this._onCloseButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
      this.closeButtonIcon = this.add.image(this.world.width - 120, 20, 'uiicons', "cross.png");
      this.closeButton.scale.x = this.closeButton.scale.y = this.closeButtonIcon.scale.x = this.closeButtonIcon.scale.y = UI_SCALE_FACTOR;
+     this.shop = new Shop(this);
     }
 
   /**
@@ -121,6 +124,9 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of play button and perform necessary actions if it occurs.
    */
   _onPlayButton() {
+    if (this.isShopOpened) {
+      return;
+    }
     this.backgroundTiles.length = 0;
     this.buttonDownAudio.play();
     this.playButton.kill();
@@ -131,7 +137,10 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of shop button and perform necessary actions if it occurs.
    */
    _onShopButton() {
+     if (this.isShopOpened) return;
      alert("shop button down");
+     this.shop.show(true);
+     this.isShopOpened = true;
   }
 
   /**
@@ -139,6 +148,7 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of share button and perform necessary actions if it occurs.
    */
    _onShareButton() {
+    if (this.isShopOpened) return;
      alert("share button down");
   }
 
@@ -147,6 +157,7 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of login button and perform necessary actions if it occurs.
    */
    _onLoginButton() {
+    if (this.isShopOpened) return;
      alert("login button down");
   }
 
@@ -155,6 +166,7 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of friends button and perform necessary actions if it occurs.
    */
    _onFriendsButton() {
+    if (this.isShopOpened) return;
      alert("friends button down");
   }
 
@@ -163,7 +175,16 @@ export default class Preload extends Phaser.State {
    * @description Listen on input down of close button and perform necessary actions if it occurs.
    */
      _onCloseButton() {
-      alert("close button down");
+      if (this.isShopOpened) {
+        // close the popup
+        this.shop.show();
+        this.isShopOpened = false;
+        alert("close the shop popup");
+      } else {
+        // close the game
+        alert("close the game");
+      }
+      
    }
 
   /**

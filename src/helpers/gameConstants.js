@@ -26,6 +26,16 @@ export const styleForScoreTextDpr2 = {
   fill: '#ffffff',
   font: '45px Arial'
 };
+export const styleForScoreTextDpr2ShopItem = {
+  align: 'center',
+  fill: '#ffffff',
+  font: '16px Arial'
+};
+export const styleForScoreTextDpr2Multiplier = {
+  align: 'center',
+  fill: '#ffffff',
+  font: '18px Arial'
+};
 export const styleForScoreValueText = {
   align: 'center',
   fill: '#ffffff',
