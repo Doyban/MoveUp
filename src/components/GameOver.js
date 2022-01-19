@@ -14,7 +14,7 @@ import {
 export default class GameOver {
   /**
    * @constructor
-   * @param {Phaser.Game} ctx (currently running game object).
+   * @param {Phaser.Game} ctx currently running game object.
    */
   constructor(ctx) {
     this.game = ctx;
@@ -23,7 +23,7 @@ export default class GameOver {
 
   /**
    * @function _build
-   * @description Create graphic elements for the game over pop up.
+   * @description Create graphic elements for the game over popup.
    */
   _build() {
     // Add music.

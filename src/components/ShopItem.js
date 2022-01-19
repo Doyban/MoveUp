@@ -1,55 +1,43 @@
-import { styleForScoreText, styleForScoreTextDpr2ShopItem, styleForScoreTextDpr2Multiplier } from "../helpers/gameConstants";
+import { styleForScoreTextDpr2ShopItem, styleForScoreTextDpr2Multiplier } from "../helpers/gameConstants";
 
 /**
  * @class ShopItem
- * @description this class is about the shop item in the popup
+ * @description Create ShopItem state.
  */
 export class ShopItem {
   /**
    * @constructor
    * @param {Phaser.State} game - Phaser.State
-   * @param {*} pos - position `{x, y}`
-   * @param {*} multiplier - number 
+   * @param {Object} pos - position `{x, y}`
+   * @param {Number} multiplier - number 
    */
   constructor(game, pos, multiplier){
     this._game = game;
-    this.visible = false;
-    this.position = pos;
-    this.multiplier = multiplier;
     this.children = [];
+    this.multiplier = multiplier;
+    this.position = pos;
+    this.visible = false;
     this._build();
   }
 
   /**
-     * @function _build
-     * @description this function will create and add al the game objects of the item
-     */
+   * @function _build
+   * @description Create graphic elements for the ShopItem.
+   */
   _build(){
     this.createBackground();
+    this.createScoreMultiplierText();
     this.createScoreText();
     this.createScoreXText();
-    this.createScoreMultiplierText();
-  }
-
-  /**
-     * @function show
-     * @description this function will be responsible for showing or hiding all the game objects of the item.
-     * @param {boolean} flag 
-     */
-  show(flag = false){
-    for (let i = 0; i < this.children.length; i++) {
-        const child = this.children[i];
-        child.visible = flag;
-    }
   }
 
   /**
    * @function createBackground
-   * @description this function will create background of the item
+   * @description this function will create background of the ShopItem
    */
   createBackground(){
     this.bg = this._game.add.button(this.position.x, this.position.y, 'guisheet', this.onItemClicked, this, 'yellow_button07.png', 'yellow_button07.png', 'yellow_button07.png', 'yellow_button07.png');
-    // this.bg = this._game.add.image(this.position.x, this.position.y, "guisheet",'yellow_button07.png');
+
     this.children.push(this.bg);
     // Scale the background depending by device pixel ratio.
     if (devicePixelRatio > 3) {
@@ -64,7 +52,7 @@ export class ShopItem {
 
   /**
    * @function createScoreText
-   * @description this function will create Score text of the item
+   * @description this function will create Score text of the ShopItem
    */
   createScoreText() {
     let style = styleForScoreTextDpr2ShopItem;
@@ -81,7 +69,7 @@ export class ShopItem {
 
   /**
    * @function createScoreXText
-   * @description this function will create Score X text of the item
+   * @description this function will create Score X text of the ShopItem
    */
   createScoreXText() {
     let style = styleForScoreTextDpr2ShopItem;
@@ -97,7 +85,7 @@ export class ShopItem {
 
   /**
    * @function createScoreMultiplierText
-   * @description this function will create Score X multiplier text of the item
+   * @description this function will create Score X multiplier text of the ShopItem
    */
   createScoreMultiplierText() {
     let style = styleForScoreTextDpr2Multiplier;
@@ -118,4 +106,15 @@ export class ShopItem {
     alert(`item clicked ${this.multiplier}`)
   }
 
+  /**
+    * @function show
+    * @description Show/hide all the game objects of the ShopItem.
+    * @param {boolean} [flag=false] - flag to show/hide the ShopItem.
+    */
+   show(flag = false){
+    for (let i = 0; i < this.children.length; i++) {
+        const child = this.children[i];
+        child.visible = flag;
+    }
+  }
 }

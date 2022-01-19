@@ -99,7 +99,7 @@ export default class Main extends Phaser.State {
 
     this.dPad.alignBottomLeft(1); // Align virtual joystick.
 
-    this.gameOverPopup = new GameOver(this); // Create game over pop up.
+    this.gameOverPopup = new GameOver(this); // Create game over popup.
   }
 
   /**
@@ -152,7 +152,7 @@ export default class Main extends Phaser.State {
   setInitData() {
 		this.movingVelocity = movingVelocity;
     this.jumpingVelocity = jumpingVelocity;
-    this.isGameOverVisible = false; // Restrict calling game over pop up many times.
+    this.isGameOverVisible = false; // Restrict calling game over popup many times.
 		this.spacing = 450; // Spacing for initial platforms.
     this.platformSpeed = platformSpeed; // Platform speed (timer).
 
