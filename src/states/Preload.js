@@ -1,7 +1,7 @@
-import { Shop } from '../components/Shop';
 import {
   styleForPlayText
 } from '../helpers/gameConstants';
+import { Shop } from '../components/Shop';
 
 export const UI_SCALE_FACTOR = 2;
 
@@ -59,6 +59,8 @@ export default class Preload extends Phaser.State {
     this.createPlayButton();
     this.createPlayText();
     this.createUiButtons();
+
+    this.shop = new Shop(this); // Create Shop, must be done afterwards of creating necessary assets, otherwise it conflicts with Shop stylings.
   }
 
   /**
@@ -85,6 +87,35 @@ export default class Preload extends Phaser.State {
   }
 
   /**
+   * @callback _onPlayButton
+   * @description Listen on input down of play button and perform necessary actions if it occurs.
+   */
+   _onPlayButton() {
+    if (this.isShopOpened) {
+      return;
+    }
+    this.backgroundTiles.length = 0;
+    this.buttonDownAudio.play();
+    this.playButton.kill();
+  }
+
+  /**
+   * @callback _onInputHover
+   * @description Listen on input hover of play button and perform necessary actions if it occurs.
+   */
+   _onInputHover() {
+    this.buttonHoverAudio.play('', '', 1, false);
+  }
+
+  /**
+   * @function startGame
+   * @description Start main state.
+   */
+   startGame() {
+    this.state.start('Main');
+  }
+
+  /**
    * @function createPlayText
    * @description Create 'Play' text for the play button.
    */
@@ -100,106 +131,78 @@ export default class Preload extends Phaser.State {
    * @function createUiButtons
    * @description Creates UI buttons.
    */
-   createUiButtons() {
-     this.shopButton = this.add.button(this.world.centerX - 290, this.world.centerY + 150, 'guisheet', this._onShopButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.shopButtonIcon = this.add.image(this.world.centerX - 290, this.world.centerY + 150, 'uiicons', "cart.png");
-     this.shopButton.scale.x = this.shopButton.scale.y = this.shopButtonIcon.scale.x = this.shopButtonIcon.scale.y = UI_SCALE_FACTOR;
-     this.shareButton = this.add.button(this.world.centerX - 130 , this.world.centerY + 150, 'guisheet', this._onShareButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.shareButtonIcon = this.add.image(this.world.centerX - 130 , this.world.centerY + 150, 'uiicons', "share2.png");
-     this.shareButton.scale.x = this.shareButton.scale.y = this.shareButtonIcon.scale.x = this.shareButtonIcon.scale.y = UI_SCALE_FACTOR;
-     this.loginButton = this.add.button(this.world.centerX + 40, this.world.centerY + 150, 'guisheet', this._onLoginButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.loginButtonIcon = this.add.image(this.world.centerX + 40, this.world.centerY + 150, 'uiicons', "singleplayer.png");
-     this.loginButton.scale.x = this.loginButton.scale.y = this.loginButtonIcon.scale.x = this.loginButtonIcon.scale.y = UI_SCALE_FACTOR;
-     this.friendsButton = this.add.button(this.world.centerX + 210, this.world.centerY + 150, 'guisheet', this._onFriendsButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.friendsButtonIcon = this.add.image(this.world.centerX + 210, this.world.centerY + 150, 'uiicons', "multiplayer.png");
-     this.friendsButton.scale.x = this.friendsButton.scale.y = this.friendsButtonIcon.scale.x = this.friendsButtonIcon.scale.y = UI_SCALE_FACTOR;
-     this.closeButton = this.add.button(this.world.width - 120, 20, 'guisheet', this._onCloseButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-     this.closeButtonIcon = this.add.image(this.world.width - 120, 20, 'uiicons', "cross.png");
-     this.closeButton.scale.x = this.closeButton.scale.y = this.closeButtonIcon.scale.x = this.closeButtonIcon.scale.y = UI_SCALE_FACTOR;
-     this.shop = new Shop(this);
-    }
-
-  /**
-   * @function _onPlayButton
-   * @description Listen on input down of play button and perform necessary actions if it occurs.
-   */
-  _onPlayButton() {
-    if (this.isShopOpened) {
-      return;
-    }
-    this.backgroundTiles.length = 0;
-    this.buttonDownAudio.play();
-    this.playButton.kill();
+  createUiButtons() {
+    this.shopButton = this.add.button(this.world.centerX - 290, this.world.centerY + 150, 'guisheet', this._onShopButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.shopButtonIcon = this.add.image(this.world.centerX - 290, this.world.centerY + 150, 'uiicons', "cart.png");
+    this.shopButton.scale.x = this.shopButton.scale.y = this.shopButtonIcon.scale.x = this.shopButtonIcon.scale.y = UI_SCALE_FACTOR;
+    this.shareButton = this.add.button(this.world.centerX - 130 , this.world.centerY + 150, 'guisheet', this._onShareButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.shareButtonIcon = this.add.image(this.world.centerX - 130 , this.world.centerY + 150, 'uiicons', "share2.png");
+    this.shareButton.scale.x = this.shareButton.scale.y = this.shareButtonIcon.scale.x = this.shareButtonIcon.scale.y = UI_SCALE_FACTOR;
+    this.loginButton = this.add.button(this.world.centerX + 40, this.world.centerY + 150, 'guisheet', this._onLoginButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.loginButtonIcon = this.add.image(this.world.centerX + 40, this.world.centerY + 150, 'uiicons', "singleplayer.png");
+    this.loginButton.scale.x = this.loginButton.scale.y = this.loginButtonIcon.scale.x = this.loginButtonIcon.scale.y = UI_SCALE_FACTOR;
+    this.friendsButton = this.add.button(this.world.centerX + 210, this.world.centerY + 150, 'guisheet', this._onInviteFriendsButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.friendsButtonIcon = this.add.image(this.world.centerX + 210, this.world.centerY + 150, 'uiicons', "multiplayer.png");
+    this.friendsButton.scale.x = this.friendsButton.scale.y = this.friendsButtonIcon.scale.x = this.friendsButtonIcon.scale.y = UI_SCALE_FACTOR;
+    this.closeButton = this.add.button(this.world.width - 120, 20, 'guisheet', this._onCloseButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.closeButtonIcon = this.add.image(this.world.width - 120, 20, 'uiicons', "cross.png");
+    this.closeButton.scale.x = this.closeButton.scale.y = this.closeButtonIcon.scale.x = this.closeButtonIcon.scale.y = UI_SCALE_FACTOR;
   }
 
+
   /**
-   * @function _onShopButton
+   * @callback _onShopButton
    * @description Listen on input down of shop button and perform necessary actions if it occurs.
    */
    _onShopButton() {
      if (this.isShopOpened) return;
      alert("shop button down");
+
+     // Show Shop with its ShopItems.
      this.shop.show(true);
      this.isShopOpened = true;
   }
 
   /**
-   * @function _onShareButton
+   * @callback _onShareButton
    * @description Listen on input down of share button and perform necessary actions if it occurs.
    */
    _onShareButton() {
     if (this.isShopOpened) return;
-     alert("share button down");
+    alert("share button down");
   }
 
   /**
-   * @function _onLoginButton
+   * @callback _onLoginButton
    * @description Listen on input down of login button and perform necessary actions if it occurs.
    */
    _onLoginButton() {
     if (this.isShopOpened) return;
-     alert("login button down");
+    alert("login button down");
   }
 
   /**
-   * @function _onFriendsButton
+   * @callback _onInviteFriendsButton
    * @description Listen on input down of friends button and perform necessary actions if it occurs.
    */
-   _onFriendsButton() {
+   _onInviteFriendsButton() {
     if (this.isShopOpened) return;
-     alert("friends button down");
-  }
-
-    /**
-   * @function _onCloseButton
-   * @description Listen on input down of close button and perform necessary actions if it occurs.
-   */
-     _onCloseButton() {
-      if (this.isShopOpened) {
-        // close the popup
-        this.shop.show();
-        this.isShopOpened = false;
-        alert("close the shop popup");
-      } else {
-        // close the game
-        alert("close the game");
-      }
-      
-   }
-
-  /**
-   * @function _onInputHover playing the music onInput Hover
-   * @description Listen on input hover of play button and perform necessary actions if it occurs.
-   */
-  _onInputHover() {
-    this.buttonHoverAudio.play('', '', 1, false);
+    alert("friends button down");
   }
 
   /**
-   * @function startGame
-   * @description Start main state.
-   */
-  startGame() {
-    this.state.start('Main');
+    * @callback _onCloseButton
+    * @description Listen on input down of close button and perform necessary actions if it occurs.
+    */
+  _onCloseButton() {
+    if (this.isShopOpened) {
+      // Close Shop with its ShopItems.
+      this.shop.show();
+      this.isShopOpened = false;
+      alert("close the shop popup");
+    } else {
+      // Close the game.
+      alert("close the game");
+    }  
   }
 }

@@ -11,13 +11,13 @@ export class Shop {
      */
     constructor (game) {
         this._game = game;
-        this.children = [];
+        this.backgroundLayers = [];
         this._build();
     }
 
     /**
      * @function _build
-     * @description Create and add all the game objects of the popup.
+     * @description Create and show all the game objects of the popup.
      */
     _build(){
         this.createBackground();
@@ -27,21 +27,24 @@ export class Shop {
 
     /**
      * @function createBackground
-     * @description Create background of the po pup.
+     * @description Create background of the popup.
      */
      createBackground(){
-        this.gameOverBackground = this._game.add.image(this._game.world.centerX, this._game.world.centerY, 'gameOverBackground');
+        // Create background.
+        this.background = this._game.add.image(this._game.world.centerX, this._game.world.centerY, 'gameOverBackground');
 
         // Scale the background depending by device pixel ratio.
         if (devicePixelRatio > 3) {
-          this.gameOverBackground.scale.setTo(2, 1.8); // For iPhone X / Pixel 2 XL / Samsung Galaxy.
+          this.background.scale.setTo(2, 1.8); // For iPhone X / Pixel 2 XL / Samsung Galaxy.
         } else if (devicePixelRatio < 2.1) {
-          this.gameOverBackground.scale.setTo(1.8, 1.65); // For iPhone 5/6 series.
+          this.background.scale.setTo(1.8, 1.65); // For iPhone 5/6 series.
         } else {
-          this.gameOverBackground.scale.setTo(1.8, 1.65); // Most of mobile devices.
+          this.background.scale.setTo(1.8, 1.65); // Most of mobile devices.
         }
-        this.gameOverBackground.anchor.setTo(0.5);
-        this.children.push(this.gameOverBackground);
+        this.background.anchor.setTo(0.5);
+
+        // Add the background to the backgroundLayers array from which all elements are being displayed later.
+        this.backgroundLayers.push(this.background);
     }
 
      /**
@@ -50,26 +53,28 @@ export class Shop {
      * @param {Number} [count=4] - number of items that can be add to the store
      */
       createShopItems(count = 4){
-        let positions = [[-100, -100],[100, -100], [-100, 100], [100, 100]];
-        let mulitpliers = [2, 3, 4, 5];
+        let positions = [[-100, -100],[100, -100], [-100, 100], [100, 100]]; // Positions of ShopItems.
+        let mulitpliers = [2, 3, 4, 6]; // Text "Score x[VALUE_IN_THIS_ARRAY]".
 
+        // Add ShopItems to the backgroundLayers array.
         for (let i = 0; i < count; i++) {
-            this.children.push(new ShopItem(this._game, {x : this._game.world.centerX + positions[i][0], y : this._game.world.centerY + positions[i][1]}, mulitpliers[i]));
+            this.backgroundLayers.push(new ShopItem(this._game, {x : this._game.world.centerX + positions[i][0], y : this._game.world.centerY + positions[i][1]}, mulitpliers[i]));
         }
     }
 
     /**
      * @function show
-     * @description Show/hide all the game objects of the popup.
-     * @param {boolean} [flag=false] - flag to show/hide the popup.
+     * @description Show/close all the game objects of the popup.
+     * @param {boolean} [flag=false] - flag to show/close the popup.
      */
-    show(flag = false){
-        for (let i = 0; i < this.children.length; i++) {
-            const child = this.children[i];
-            if (child instanceof ShopItem) {
-                child.show(flag);
+    show(flag = false) {
+        // Make elements visible, depending by the flag.
+        for (let i = 0; i < this.backgroundLayers.length; i++) {
+            const backgroundLayer = this.backgroundLayers[i];
+            if (backgroundLayer instanceof ShopItem) {
+                backgroundLayer.show(flag);
             } else {
-                child.visible = flag;
+                backgroundLayer.visible = flag;
             }
         }
     }

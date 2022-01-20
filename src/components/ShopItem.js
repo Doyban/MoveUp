@@ -13,7 +13,7 @@ export class ShopItem {
    */
   constructor(game, pos, multiplier){
     this._game = game;
-    this.children = [];
+    this.backgroundLayers = [];
     this.multiplier = multiplier;
     this.position = pos;
     this.visible = false;
@@ -26,95 +26,91 @@ export class ShopItem {
    */
   _build(){
     this.createBackground();
-    this.createScoreMultiplierText();
     this.createScoreText();
     this.createScoreXText();
+    this.createScoreMultiplierText();
   }
 
   /**
    * @function createBackground
-   * @description this function will create background of the ShopItem
+   * @description Create background of the ShopItem.
    */
   createBackground(){
-    this.bg = this._game.add.button(this.position.x, this.position.y, 'guisheet', this.onItemClicked, this, 'yellow_button07.png', 'yellow_button07.png', 'yellow_button07.png', 'yellow_button07.png');
+    // Create background.
+    this.background = this._game.add.button(this.position.x, this.position.y, 'guisheet', this.onItemClicked, this, 'yellow_button07.png', 'yellow_button07.png', 'yellow_button07.png', 'yellow_button07.png');
 
-    this.children.push(this.bg);
     // Scale the background depending by device pixel ratio.
     if (devicePixelRatio > 3) {
-      this.bg.scale.setTo(3.2, 3); // For iPHone X / Pixel 2 XL / Samsun Galaxy.
+      this.background.scale.setTo(3.2, 3); // For iPHone X / Pixel 2 XL / Samsun Galaxy.
     } else if (devicePixelRatio < 2.1) {
-      this.bg.scale.setTo(3, 2.85); // For iPhone 5/6 series.
+      this.background.scale.setTo(3, 2.85); // For iPhone 5/6 series.
     } else {
-      this.bg.scale.setTo(3, 2.85); // Most of mobile devices.
+      this.background.scale.setTo(3, 2.85); // Most of mobile devices.
     }
-    this.bg.anchor.setTo(0.5);
-  }
+    this.background.anchor.setTo(0.5);
 
-  /**
-   * @function createScoreText
-   * @description this function will create Score text of the ShopItem
-   */
-  createScoreText() {
-    let style = styleForScoreTextDpr2ShopItem;
-
-    // this.gameScoreText = this._game.add.text(this.position.x, this.position.y, 'Score', style);
-    this.gameScoreText = this._game.add.text(0, -10, 'Score', style);
-    this.gameScoreText.anchor.setTo(0.5);
-    // this.gameScoreText.alignTo(this.bg, Phaser.CENTER, -10, -60);
-    this.gameScoreText.stroke = '#627577';
-    this.gameScoreText.strokeThickness = 2.2;
-
-    this.bg.addChild(this.gameScoreText);
-  }
-
-  /**
-   * @function createScoreXText
-   * @description this function will create Score X text of the ShopItem
-   */
-  createScoreXText() {
-    let style = styleForScoreTextDpr2ShopItem;
-
-    this.gameScoreTextX = this._game.add.text(-8, 10, "x", style);
-    this.gameScoreTextX.anchor.setTo(0.5);
-    this.gameScoreTextX.stroke = '#627577';
-    this.gameScoreTextX.strokeThickness = 3;
-    this.gameScoreText.autoRound = true;
-    this.gameScoreText.lineSpacing = 5;
-    this.bg.addChild(this.gameScoreTextX);
-  }
-
-  /**
-   * @function createScoreMultiplierText
-   * @description this function will create Score X multiplier text of the ShopItem
-   */
-  createScoreMultiplierText() {
-    let style = styleForScoreTextDpr2Multiplier;
-
-    this.gameScoreTextX = this._game.add.text(8, 10, this.multiplier, style);
-    this.gameScoreTextX.anchor.setTo(0.5);
-    this.gameScoreTextX.stroke = '#627577';
-    this.gameScoreTextX.strokeThickness = 3;
-
-    this.bg.addChild(this.gameScoreTextX);
+    // Add the background to the backgroundLayers array from which all elements are being displayed later.
+    this.backgroundLayers.push(this.background);
   }
 
   /**
    * @callback
-   * @description will be called after this item clicked
+   * @description Listen on input down of ShopItem and perform necessary actions if it occurs.
    */
-  onItemClicked(){
+   onItemClicked() {
     alert(`item clicked ${this.multiplier}`)
   }
 
   /**
+   * @function createScoreText
+   * @description Create Score text of the ShopItem.
+   */
+  createScoreText() {
+    this.gameScoreText = this._game.add.text(0, -10, 'Score', styleForScoreTextDpr2ShopItem);
+    this.gameScoreText.anchor.setTo(0.5);
+    this.gameScoreText.stroke = '#627577';
+    this.gameScoreText.strokeThickness = 2.2;
+    this.background.addChild(this.gameScoreText);
+  }
+
+  /**
+   * @function createScoreXText
+   * @description Create "x" text between "Score" and "[VALUE_IN_THE_ARRAY]".
+   */
+  createScoreXText() {
+    this.gameScoreText.autoRound = true;
+    this.gameScoreText.lineSpacing = 5;
+    this.gameScoreTextX = this._game.add.text(-8, 10, "x", styleForScoreTextDpr2ShopItem);
+    this.gameScoreTextX.anchor.setTo(0.5);
+    this.gameScoreTextX.stroke = '#627577';
+    this.gameScoreTextX.strokeThickness = 3;
+    this.background.addChild(this.gameScoreTextX);
+  }
+
+  /**
+   * @function createScoreMultiplierText
+   * @description Create "[VALUE_IN_THE_ARRAY]" text before "Score x".
+   */
+  createScoreMultiplierText() {
+    this.gameScoreTextX = this._game.add.text(8, 10, this.multiplier, styleForScoreTextDpr2Multiplier);
+    this.gameScoreTextX.anchor.setTo(0.5);
+    this.gameScoreTextX.stroke = '#627577';
+    this.gameScoreTextX.strokeThickness = 3;
+
+    // Add the text to the background.
+    this.background.addChild(this.gameScoreTextX);
+  }
+
+  /**
     * @function show
-    * @description Show/hide all the game objects of the ShopItem.
-    * @param {boolean} [flag=false] - flag to show/hide the ShopItem.
+    * @description Show/close all the game objects of the ShopItem.
+    * @param {boolean} [flag=false] - flag to show/close the ShopItem.
     */
-   show(flag = false){
-    for (let i = 0; i < this.children.length; i++) {
-        const child = this.children[i];
-        child.visible = flag;
+   show(flag = false) {
+    // Make elements visible, depending by the flag.
+    for (let i = 0; i < this.backgroundLayers.length; i++) {
+        const backgroundLayer = this.backgroundLayers[i];
+        backgroundLayer.visible = flag;
     }
   }
 }
