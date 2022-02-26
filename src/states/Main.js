@@ -92,12 +92,14 @@ export default class Main extends Phaser.State {
     this._checkMusicState();
     // Create mobile controls.
     // TODO: Remove it for desktop deployments.
-    this.createVirtualJoystick();
-    this.createJumpButton();
+    if (!Phaser.Device.desktop) {
+      this.createVirtualJoystick();
+      this.createJumpButton();
+      this.scaleVirtualJoyStickIfNotIphone(); // Scale virtual joystick if this is not iphone.
+  
+      this.dPad.alignBottomLeft(1); // Align virtual joystick.
+    }
 
-    this.scaleVirtualJoyStickIfNotIphone(); // Scale virtual joystick if this is not iphone.
-
-    this.dPad.alignBottomLeft(1); // Align virtual joystick.
 
     this.gameOverPopup = new GameOver(this); // Create game over popup.
   }
@@ -132,7 +134,7 @@ export default class Main extends Phaser.State {
       this.gameOver();
     }
     // Virtual joystick controls.
-    if (this.dPad.isDown) {
+    if (this.dPad && this.dPad.isDown) {
       if (this.dPad.direction === Phaser.LEFT) {
         this.playerMovingAnimation();
         this.player.body.velocity.x = -this.movingVelocity;

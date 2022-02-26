@@ -59,8 +59,6 @@ export default class Preload extends Phaser.State {
     this.createPlayButton();
     this.createPlayText();
     this.createUiButtons();
-
-    this.shop = new Shop(this); // Create Shop, must be done afterwards of creating necessary assets, otherwise it conflicts with Shop stylings.
   }
 
   /**
@@ -158,9 +156,7 @@ export default class Preload extends Phaser.State {
      if (this.isShopOpened) return;
      alert("shop button down");
 
-     // Show Shop with its ShopItems.
-     this.shop.show(true);
-     this.isShopOpened = true;
+     this.state.start('ShopState');
   }
 
   /**

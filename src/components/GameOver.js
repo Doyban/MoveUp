@@ -170,8 +170,8 @@ export default class GameOver {
       this.gameOverMusic.stop();
     }
     this.buttonDownMusic.play();
-    this.game.buttonJump.destroy();
-    this.game.dPad.destroy();
+    if(this.game.buttonJump)this.game.buttonJump.destroy();
+    if(this.game.dPad)this.game.dPad.destroy();
     this.game.isGameOverVisible = false;
     this.game.state.restart();
     this.gameOverBackground.visible = false;
