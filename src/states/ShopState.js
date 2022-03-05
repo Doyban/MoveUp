@@ -9,7 +9,6 @@ import { UI_SCALE_FACTOR } from "./Preload";
 export class ShopState extends Phaser.State {
     /**
      * @constructor
-     * @param {Phaser.State} game - current state of the game where this popup needs to be rendered
      */
     constructor () {
         super();          
@@ -18,7 +17,7 @@ export class ShopState extends Phaser.State {
 
     /**
      * @function create
-     * @description Create and show all the game objects of the popup.
+     * @description Once preload is completed start creating necessary game elements.
      */
     create(){
         this.createBackground();
@@ -32,11 +31,12 @@ export class ShopState extends Phaser.State {
     * @description Create background with respective tile for background.
     */
     createBackground() {
-        // Get dimensions of used tile.
-        this.tileWidthBackground = this.cache.getImage('gameBackgroundTile').width;
-        this.tileHeightBackground = this.cache.getImage('gameBackgroundTile').height;
-
         let background = [];
+
+        // Get dimensions of used tile.
+        this.tileHeightBackground = this.cache.getImage('gameBackgroundTile').height;
+        this.tileWidthBackground = this.cache.getImage('gameBackgroundTile').width;
+
         for (let i = 0; i <= this.game.width; i += this.tileWidthBackground) {
           for (let j = 0; j <= this.game.height; j += this.tileHeightBackground) {
             background.push(this.add.image(i, j, 'gameBackgroundTile'));
@@ -60,8 +60,9 @@ export class ShopState extends Phaser.State {
     * @param {Number} [count=4] - number of items that can be add to the store
     */
      createShopItems(count = 4){
-       let positions = [[-100, -100],[100, -100], [-100, 100], [100, 100]]; // Positions of ShopItems.
+       let positions = [[-100, -100], [100, -100], [-100, 100], [100, 100]]; // Positions of ShopItems.
        let mulitpliers = [2, 3, 4, 6]; // Text "Score x[VALUE_IN_THIS_ARRAY]".
+
        // Add ShopItems to the backgroundLayers array.
        for (let i = 0; i < count; i++) {
            this.backgroundLayers.push(new ShopItem(this, {x : this.world.centerX + positions[i][0], y : this.world.centerY + positions[i][1]}, mulitpliers[i]));

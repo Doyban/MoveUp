@@ -40,7 +40,7 @@ export default class Main extends Phaser.State {
 
   /**
    * @function create
-   * @description Once init is completed start creating necessary game elements.
+   * @description Once preload is completed start creating necessary game elements.
    */
   create() {
     // Add and start playing background music.
@@ -90,8 +90,8 @@ export default class Main extends Phaser.State {
     this.createMusicOffButton();
     
     this._checkMusicState();
+
     // Create mobile controls.
-    // TODO: Remove it for desktop deployments.
     if (!Phaser.Device.desktop) {
       this.createVirtualJoystick();
       this.createJumpButton();
