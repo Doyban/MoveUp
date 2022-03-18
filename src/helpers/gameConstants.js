@@ -16,6 +16,11 @@ export const styleForPlayText = {
   fill: '#ffffff',
   font: '55px Arial'
 };
+export const styleForTitleText = {
+  align: 'center',
+  fill: '#ffe53b',
+  font: '120px Arial'
+};
 export const styleForScoreText = {
   align: 'center',
   fill: '#ffffff',

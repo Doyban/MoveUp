@@ -1,5 +1,5 @@
 import {
-  styleForPlayText
+  styleForPlayText, styleForTitleText
 } from '../helpers/gameConstants';
 import { Shop } from '../components/Shop';
 
@@ -59,6 +59,7 @@ export default class Preload extends Phaser.State {
     this.createPlayButton();
     this.createPlayText();
     this.createUiButtons();
+    this.createTitleText();
   }
 
   /**
@@ -200,5 +201,17 @@ export default class Preload extends Phaser.State {
       // Close the game.
       alert("close the game");
     }  
+  }
+
+  /**
+   * @function createTitleText
+   * @description Create 'MoveUp' text.
+   */
+   createTitleText() {
+    this.titleText = this.add.text(this.game.width * 0.5, this.game.height * 0.3, 'MoveUp', styleForTitleText);
+    this.titleText.anchor.setTo(0.5);
+    this.titleText.fontWeight="bold";
+    this.titleText.stroke = '#000000';
+    this.titleText.strokeThickness = 7;
   }
 }
