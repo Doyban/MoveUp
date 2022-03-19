@@ -148,7 +148,6 @@ export default class Preload extends Phaser.State {
     this.closeButton.scale.x = this.closeButton.scale.y = this.closeButtonIcon.scale.x = this.closeButtonIcon.scale.y = UI_SCALE_FACTOR;
   }
 
-
   /**
    * @callback _onShopButton
    * @description Listen on input down of shop button and perform necessary actions if it occurs.

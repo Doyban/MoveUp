@@ -57,8 +57,8 @@ export default class GameOver {
     this.createScoreText();
     this.createScoreValueText();
 
-    this.createRetryButton(); // Create retry button.
     this.createHomeButton(); // Create home button.
+    this.createRetryButton(); // Create retry button.
 
     // Initially make game over invisible.
     this.gameOverBackground.visible = false;
@@ -120,73 +120,56 @@ export default class GameOver {
   }
 
   /**
-   * @function _onInputHover
-   * @description Play music on inputh over.
+   * @function createHomeButton
+   * @description Create home button.
    */
-  _onInputHover() {
-    this.buttonHoverMusic.play('', '', 1, false);
+   createHomeButton() {
+    this.buttonHome = this.game.add.button(0, 0, 'guisheet', this._onHomeButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.buttonHome.anchor.setTo(0.5);
+    this.buttonHome.alignTo(this.gameScoreValueText, Phaser.BOTTOM_CENTER, 0, 200);
+    this.buttonHome.scale.setTo(2);
+    this.buttonHome.visible = false;
+    this.buttonHomeIcon = this.game.add.image(this.buttonHome.x, this.buttonHome.y - 5, 'uiicons', "home.png");
+    this.buttonHomeIcon.anchor.setTo(0.5);
+    this.buttonHomeIcon.scale.setTo(1.5);
+    this.buttonHomeIcon.visible = false;
+  }
+
+  /**
+   * @function _onHomeButtonClicked
+   * @description Listen on input down of home button and perform necessary actions if it occurs.
+   */
+   _onHomeButtonClicked() {
+    if (this.gameOverMusic.isPlaying) {
+      this.gameOverMusic.stop();
+    }
+    this.buttonDownMusic.play();
+    if (this.game.buttonJump) this.game.buttonJump.destroy();
+    if (this.game.dPad) this.game.dPad.destroy();
+    this.game.state.start("Preload");
   }
 
   /**
    * @function createRetryButton
    * @description Create retry button.
    */
-  createRetryButton() {
-    this.buttonRetry = this.game.add.button(0, 0, 'guisheet', this._onRetry, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+   createRetryButton() {
+    this.buttonRetry = this.game.add.button(0, 0, 'guisheet', this._onRetryButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.buttonRetry.anchor.setTo(0.5);
     this.buttonRetry.alignTo(this.gameScoreValueText, Phaser.BOTTOM_CENTER, 0, 60);
-    this.buttonRetryIcon = this.game.add.image(this.buttonRetry.x, this.buttonRetry.y - 5, 'uiicons', "return.png");
-    this.buttonRetryIcon.visible = false;
-    this.buttonRetryIcon.anchor.setTo(0.5);
     this.buttonRetry.scale.setTo(2);
-    this.buttonRetryIcon.scale.setTo(1.5);
     this.buttonRetry.visible = false;
-  }
-  
-  /**
-   * @function createHomeButton
-   * @description Create home button.
-   */
-  createHomeButton() {
-    this.buttonHome = this.game.add.button(0, 0, 'guisheet', this._onHomeButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-    this.buttonHome.anchor.setTo(0.5);
-    this.buttonHome.alignTo(this.gameScoreValueText, Phaser.BOTTOM_CENTER, 0, 200);
-    this.buttonHomeIcon = this.game.add.image(this.buttonHome.x, this.buttonHome.y - 5, 'uiicons', "home.png");
-    this.buttonHomeIcon.anchor.setTo(0.5);
-    this.buttonHomeIcon.visible = false;
-    this.buttonHome.scale.setTo(2);
-    this.buttonHomeIcon.scale.setTo(1.5);
-    this.buttonHome.visible = false;
+    this.buttonRetryIcon = this.game.add.image(this.buttonRetry.x, this.buttonRetry.y - 5, 'uiicons', "return.png");
+    this.buttonRetryIcon.anchor.setTo(0.5);
+    this.buttonRetryIcon.scale.setTo(1.5);
+    this.buttonRetryIcon.visible = false;
   }
 
   /**
-   * @function showGameOver
-   * @param {Number} score
-   * @param {boolean} [true] isGameOver
-   * @description Show game over screen.
-   */
-  showGameOver(score, isGameOver = true) {
-    if (!isGameOver) return isGameOver;
-    this.buttonRetry.visible = true;
-    this.buttonRetryIcon.visible = true;
-    this.buttonHomeIcon.visible = true;
-    this.buttonHome.visible = true;
-    this.game.backgroundMusic.stop();
-    this.game.isGameOverVisible = true;
-    this.gameOverBackground.visible = true;
-    this.gameOverMusic.play();
-    this.gameOverText.visible = true;
-    this.gameScoreValueText.setText(score, true);
-    this.gameScoreValueText.visible = true;
-    this.gameScoreText.visible = true;
-    this.transparentBackground.visible = true;
-  }
-
-  /**
-   * @function _onRetry
+   * @function _onRetryButtonClicked
    * @description Listen on input down of retry button and perform necessary actions if it occurs.
    */
-  _onRetry() {
+  _onRetryButtonClicked() {
     if (this.gameOverMusic.isPlaying) {
       this.gameOverMusic.stop();
     }
@@ -199,16 +182,25 @@ export default class GameOver {
   }
 
   /**
-   * @function _onHomeButton Clicked
-   * @description Listen on input down of home button and perform necessary actions if it occurs.
+   * @function showGameOver
+   * @param {Number} score
+   * @param {boolean} [true] isGameOver
+   * @description Show game over screen.
    */
-  _onHomeButtonClicked() {
-    if (this.gameOverMusic.isPlaying) {
-      this.gameOverMusic.stop();
-    }
-    this.buttonDownMusic.play();
-    if (this.game.buttonJump) this.game.buttonJump.destroy();
-    if (this.game.dPad) this.game.dPad.destroy();
-    this.game.state.start("Preload");
+  showGameOver(score, isGameOver = true) {
+    if (!isGameOver) return isGameOver;
+    this.buttonHome.visible = true;
+    this.buttonHomeIcon.visible = true;
+    this.buttonRetry.visible = true;
+    this.buttonRetryIcon.visible = true;
+    this.game.backgroundMusic.stop();
+    this.game.isGameOverVisible = true;
+    this.gameOverBackground.visible = true;
+    this.gameOverMusic.play();
+    this.gameOverText.visible = true;
+    this.gameScoreValueText.setText(score, true);
+    this.gameScoreValueText.visible = true;
+    this.gameScoreText.visible = true;
+    this.transparentBackground.visible = true;
   }
 }

@@ -3,7 +3,6 @@ import {
   gameHeight
 } from './helpers/gameConstants.js';
 import Boot from './states/Boot.js';
-import GameTitle from './states/GameTitle.js';
 import Main from './states/Main.js';
 import Preload from './states/Preload.js';
 import { ShopState } from './states/ShopState.js';
@@ -22,7 +21,6 @@ class Game extends Phaser.Game {
 
     // Add all states.
     this.state.add('Boot', Boot);
-    this.state.add('GameTitle', GameTitle);
     this.state.add('Main', Main);
     this.state.add('Preload', Preload);
     this.state.add('ShopState', ShopState);
