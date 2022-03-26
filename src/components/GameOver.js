@@ -126,7 +126,7 @@ export default class GameOver {
    createHomeButton() {
     this.buttonHome = this.game.add.button(0, 0, 'guisheet', this._onHomeButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.buttonHome.anchor.setTo(0.5);
-    this.buttonHome.alignTo(this.gameScoreValueText, Phaser.BOTTOM_CENTER, 0, 200);
+    this.buttonHome.alignTo(this.gameOverBackground, Phaser.BOTTOM_RIGHT, -50, -90);
     this.buttonHome.scale.setTo(2);
     this.buttonHome.visible = false;
     this.buttonHomeIcon = this.game.add.image(this.buttonHome.x, this.buttonHome.y - 5, 'uiicons', "home.png");
@@ -156,7 +156,7 @@ export default class GameOver {
    createRetryButton() {
     this.buttonRetry = this.game.add.button(0, 0, 'guisheet', this._onRetryButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.buttonRetry.anchor.setTo(0.5);
-    this.buttonRetry.alignTo(this.gameScoreValueText, Phaser.BOTTOM_CENTER, 0, 60);
+    this.buttonRetry.alignTo(this.gameOverBackground, Phaser.BOTTOM_LEFT, -50, -90);
     this.buttonRetry.scale.setTo(2);
     this.buttonRetry.visible = false;
     this.buttonRetryIcon = this.game.add.image(this.buttonRetry.x, this.buttonRetry.y - 5, 'uiicons', "return.png");
