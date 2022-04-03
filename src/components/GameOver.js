@@ -59,6 +59,7 @@ export default class GameOver {
 
     this.createHomeButton(); // Create home button.
     this.createRetryButton(); // Create retry button.
+    this.createShareButton(); // Create share button.
 
     // Initially make game over invisible.
     this.gameOverBackground.visible = false;
@@ -166,6 +167,22 @@ export default class GameOver {
   }
 
   /**
+   * @function createShareButton
+   * @description Create share button.
+   */
+   createShareButton() {
+    this.buttonShare = this.game.add.button(0, 0, 'guisheet', this._onShareButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.buttonShare.anchor.setTo(0.5);
+    this.buttonShare.alignTo(this.gameOverBackground, Phaser.BOTTOM_CENTER, 0, -90);
+    this.buttonShare.scale.setTo(2);
+    this.buttonShare.visible = false;
+    this.buttonShareIcon = this.game.add.image(this.buttonShare.x, this.buttonShare.y - 5, 'uiicons', "share2.png");
+    this.buttonShareIcon.anchor.setTo(0.5);
+    this.buttonShareIcon.scale.setTo(1.5);
+    this.buttonShareIcon.visible = false;
+  }
+
+  /**
    * @function _onRetryButtonClicked
    * @description Listen on input down of retry button and perform necessary actions if it occurs.
    */
@@ -180,6 +197,14 @@ export default class GameOver {
     this.game.state.restart();
     this.gameOverBackground.visible = false;
   }
+  
+  /**
+   * @function _onShareButtonClicked
+   * @description Listen on input down of share button and perform necessary actions if it occurs.
+   */
+  _onShareButtonClicked() {
+    alert("share button clicked");
+  }
 
   /**
    * @function showGameOver
@@ -193,6 +218,8 @@ export default class GameOver {
     this.buttonHomeIcon.visible = true;
     this.buttonRetry.visible = true;
     this.buttonRetryIcon.visible = true;
+    this.buttonShare.visible = true;
+    this.buttonShareIcon.visible = true;
     this.game.backgroundMusic.stop();
     this.game.isGameOverVisible = true;
     this.gameOverBackground.visible = true;
