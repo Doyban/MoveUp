@@ -59,7 +59,6 @@ export default class GameOver {
 
     this.createHomeButton(); // Create home button.
     this.createRetryButton(); // Create retry button.
-    this.createShareButton(); // Create share button.
 
     // Initially make game over invisible.
     this.gameOverBackground.visible = false;
@@ -124,7 +123,7 @@ export default class GameOver {
    * @function createHomeButton
    * @description Create home button.
    */
-   createHomeButton() {
+  createHomeButton() {
     this.buttonHome = this.game.add.button(0, 0, 'guisheet', this._onHomeButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.buttonHome.anchor.setTo(0.5);
     this.buttonHome.alignTo(this.gameOverBackground, Phaser.BOTTOM_RIGHT, -50, -90);
@@ -140,7 +139,7 @@ export default class GameOver {
    * @function _onHomeButtonClicked
    * @description Listen on input down of home button and perform necessary actions if it occurs.
    */
-   _onHomeButtonClicked() {
+  _onHomeButtonClicked() {
     if (this.gameOverMusic.isPlaying) {
       this.gameOverMusic.stop();
     }
@@ -154,7 +153,7 @@ export default class GameOver {
    * @function createRetryButton
    * @description Create retry button.
    */
-   createRetryButton() {
+  createRetryButton() {
     this.buttonRetry = this.game.add.button(0, 0, 'guisheet', this._onRetryButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.buttonRetry.anchor.setTo(0.5);
     this.buttonRetry.alignTo(this.gameOverBackground, Phaser.BOTTOM_LEFT, -50, -90);
@@ -164,22 +163,6 @@ export default class GameOver {
     this.buttonRetryIcon.anchor.setTo(0.5);
     this.buttonRetryIcon.scale.setTo(1.5);
     this.buttonRetryIcon.visible = false;
-  }
-
-  /**
-   * @function createShareButton
-   * @description Create share button.
-   */
-   createShareButton() {
-    this.buttonShare = this.game.add.button(0, 0, 'guisheet', this._onShareButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-    this.buttonShare.anchor.setTo(0.5);
-    this.buttonShare.alignTo(this.gameOverBackground, Phaser.BOTTOM_CENTER, 0, -90);
-    this.buttonShare.scale.setTo(2);
-    this.buttonShare.visible = false;
-    this.buttonShareIcon = this.game.add.image(this.buttonShare.x, this.buttonShare.y - 5, 'uiicons', "share2.png");
-    this.buttonShareIcon.anchor.setTo(0.5);
-    this.buttonShareIcon.scale.setTo(1.5);
-    this.buttonShareIcon.visible = false;
   }
 
   /**
@@ -197,14 +180,6 @@ export default class GameOver {
     this.game.state.restart();
     this.gameOverBackground.visible = false;
   }
-  
-  /**
-   * @function _onShareButtonClicked
-   * @description Listen on input down of share button and perform necessary actions if it occurs.
-   */
-  _onShareButtonClicked() {
-    alert("share button clicked");
-  }
 
   /**
    * @function showGameOver
@@ -218,8 +193,6 @@ export default class GameOver {
     this.buttonHomeIcon.visible = true;
     this.buttonRetry.visible = true;
     this.buttonRetryIcon.visible = true;
-    this.buttonShare.visible = true;
-    this.buttonShareIcon.visible = true;
     this.game.backgroundMusic.stop();
     this.game.isGameOverVisible = true;
     this.gameOverBackground.visible = true;

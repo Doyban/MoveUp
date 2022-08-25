@@ -5,7 +5,6 @@ import {
 import Boot from './states/Boot.js';
 import Main from './states/Main.js';
 import Preload from './states/Preload.js';
-import { ShopState } from './states/ShopState.js';
 
 /**
  * @class Game
@@ -23,7 +22,6 @@ class Game extends Phaser.Game {
     this.state.add('Boot', Boot);
     this.state.add('Main', Main);
     this.state.add('Preload', Preload);
-    this.state.add('ShopState', ShopState);
 
     this.state.start('Boot'); // Start the first state.
   }
