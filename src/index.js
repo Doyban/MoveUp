@@ -19,6 +19,18 @@ class Game extends Phaser.Game {
   constructor() {
     super(gameWidth, gameHeight, Phaser.CANVAS, 'content', null, true); // Create phaser game.
 
+    // Initialize Firebase
+    const config = {
+      apiKey: "AIzaSyBAIOhzJ5qygFDxxURHRRxdyb9hpEjYdi4",
+      authDomain: "moveup-fd592.firebaseapp.com",
+      projectId: "moveup-fd592",
+      storageBucket: "moveup-fd592.appspot.com",
+      messagingSenderId: "913523773880",
+      appId: "1:913523773880:web:44ddca692ec36a8cd7bf4d",
+      measurementId: "G-8V8K3WE4R3"
+    };
+    firebase.initializeApp(config);
+
     // Add all states.
     this.state.add('Boot', Boot);
     this.state.add('Main', Main);
@@ -28,4 +40,5 @@ class Game extends Phaser.Game {
     this.state.start('Boot'); // Start the first state.
   }
 }
+
 window.game = new Game();

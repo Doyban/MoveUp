@@ -9,9 +9,9 @@ export class ShopItem {
    * @constructor
    * @param {Phaser.State} game - Phaser.State
    * @param {Object} pos - position `{x, y}`
-   * @param {Number} multiplier - number 
+   * @param {Number} multiplier - number
    */
-  constructor(game, pos, multiplier){
+  constructor(game, pos, multiplier) {
     this._game = game;
     this.backgroundLayers = [];
     this.multiplier = multiplier;
@@ -24,7 +24,7 @@ export class ShopItem {
    * @function _build
    * @description Create graphic elements for the ShopItem.
    */
-  _build(){
+  _build() {
     this.createBackground();
     this.createScoreText();
     this.createScoreXText();
@@ -35,7 +35,7 @@ export class ShopItem {
    * @function createBackground
    * @description Create background of the ShopItem.
    */
-  createBackground(){
+  createBackground() {
     // Create background.
     this.background = this._game.add.button(this.position.x, this.position.y, 'guisheet', this.onItemClicked, this, 'yellow_button07.png', 'yellow_button07.png', 'yellow_button07.png', 'yellow_button07.png');
 
@@ -57,8 +57,29 @@ export class ShopItem {
    * @callback
    * @description Listen on input down of ShopItem and perform necessary actions if it occurs.
    */
-   onItemClicked() {
-    alert(`item clicked ${this.multiplier}`)
+  onItemClicked() {
+    alert(`item clicked ${this.multiplier} + scorex${this.multiplier}`)
+    var that = this;
+    store.refresh();
+
+    // Prepare product.
+    store.register({
+      id: `scorex${this.multiplier}`,
+      alias: `Score ${this.multiplier}`,
+      type: store.CONSUMABLE
+    });
+
+    // Purchase product.
+    store.order(`scorex${this.multiplier}`);
+    store.refresh();
+    store.when(`scorex${this.multiplier}`).approved(function (order) {
+      order.finish();
+      store.refresh();
+
+      // Add extra score and begin the game.
+      localStorage.scoreRate = this.multiplier;
+      that.game.state.start('ShopState');
+    });
   }
 
   /**
@@ -106,11 +127,11 @@ export class ShopItem {
     * @description Show/close all the game objects of the ShopItem.
     * @param {boolean} [flag=false] - flag to show/close the ShopItem.
     */
-   show(flag = false) {
+  show(flag = false) {
     // Make elements visible, depending by the flag.
     for (let i = 0; i < this.backgroundLayers.length; i++) {
-        const backgroundLayer = this.backgroundLayers[i];
-        backgroundLayer.visible = flag;
+      const backgroundLayer = this.backgroundLayers[i];
+      backgroundLayer.visible = flag;
     }
   }
 }

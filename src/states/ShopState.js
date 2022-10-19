@@ -11,7 +11,7 @@ export class ShopState extends Phaser.State {
      * @constructor
      */
     constructor () {
-        super();          
+        super();
         this.backgroundLayers = [];
     }
 

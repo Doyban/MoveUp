@@ -89,7 +89,7 @@ export default class Preload extends Phaser.State {
    * @callback _onPlayButton
    * @description Listen on input down of play button and perform necessary actions if it occurs.
    */
-   _onPlayButton() {
+  _onPlayButton() {
     if (this.isShopOpened) {
       return;
     }
@@ -102,7 +102,7 @@ export default class Preload extends Phaser.State {
    * @callback _onInputHover
    * @description Listen on input hover of play button and perform necessary actions if it occurs.
    */
-   _onInputHover() {
+  _onInputHover() {
     this.buttonHoverAudio.play('', '', 1, false);
   }
 
@@ -110,7 +110,7 @@ export default class Preload extends Phaser.State {
    * @function startGame
    * @description Start main state.
    */
-   startGame() {
+  startGame() {
     this.state.start('Main');
   }
 
@@ -134,8 +134,8 @@ export default class Preload extends Phaser.State {
     this.shopButton = this.add.button(this.world.centerX - 290, this.world.centerY + 150, 'guisheet', this._onShopButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.shopButtonIcon = this.add.image(this.world.centerX - 290, this.world.centerY + 150, 'uiicons', "cart.png");
     this.shopButton.scale.x = this.shopButton.scale.y = this.shopButtonIcon.scale.x = this.shopButtonIcon.scale.y = UI_SCALE_FACTOR;
-    this.shareButton = this.add.button(this.world.centerX - 130 , this.world.centerY + 150, 'guisheet', this._onShareButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-    this.shareButtonIcon = this.add.image(this.world.centerX - 130 , this.world.centerY + 150, 'uiicons', "share2.png");
+    this.shareButton = this.add.button(this.world.centerX - 130, this.world.centerY + 150, 'guisheet', this._onShareButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
+    this.shareButtonIcon = this.add.image(this.world.centerX - 130, this.world.centerY + 150, 'uiicons', "share2.png");
     this.shareButton.scale.x = this.shareButton.scale.y = this.shareButtonIcon.scale.x = this.shareButtonIcon.scale.y = UI_SCALE_FACTOR;
     this.loginButton = this.add.button(this.world.centerX + 40, this.world.centerY + 150, 'guisheet', this._onLoginButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.loginButtonIcon = this.add.image(this.world.centerX + 40, this.world.centerY + 150, 'uiicons', "singleplayer.png");
@@ -146,44 +146,75 @@ export default class Preload extends Phaser.State {
     this.closeButton = this.add.button(this.world.width - 120, 20, 'guisheet', this._onCloseButton, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.closeButtonIcon = this.add.image(this.world.width - 120, 20, 'uiicons', "cross.png");
     this.closeButton.scale.x = this.closeButton.scale.y = this.closeButtonIcon.scale.x = this.closeButtonIcon.scale.y = UI_SCALE_FACTOR;
+
+    localStorage.scoreRate = localStorage.scoreRate || 1; // Initialize scoreRate.
+    initAd(); // Initialize AdMob.
   }
 
   /**
    * @callback _onShopButton
    * @description Listen on input down of shop button and perform necessary actions if it occurs.
    */
-   _onShopButton() {
-     if (this.isShopOpened) return;
-     alert("shop button down");
+  _onShopButton() {
+    if (this.isShopOpened) return;
 
-     this.state.start('ShopState');
+    this.state.start('ShopState');
   }
 
   /**
    * @callback _onShareButton
    * @description Listen on input down of share button and perform necessary actions if it occurs.
    */
-   _onShareButton() {
+  _onShareButton() {
     if (this.isShopOpened) return;
-    alert("share button down");
+
+    // This is the complete list of currently supported params you can pass to the plugin (all optional)
+    const options = {
+      message: 'Play MoveUp!', // not supported on some apps (Facebook, Instagram)
+      subject: 'Play MoveUp!', // fi. for email
+      files: ['https://doyban.com/logos/piratebay.png', 'https://doyban.com/logos/moveup.png'], // an array of filenames either locally or remotely
+      url: 'https://doyban.com/moveup',
+    };
+
+    const onSuccess = function (result) {
+      alert("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+      alert("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+    };
+
+    const onError = function (msg) {
+      alert("Sharing failed with message: " + msg);
+    };
+
+    window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
   }
 
   /**
    * @callback _onLoginButton
    * @description Listen on input down of login button and perform necessary actions if it occurs.
    */
-   _onLoginButton() {
+  _onLoginButton() {
     if (this.isShopOpened) return;
-    alert("login button down");
+    global.FirebaseAPI.prototype.loginUser(); // Log in user through Firebase.
   }
 
   /**
    * @callback _onInviteFriendsButton
    * @description Listen on input down of friends button and perform necessary actions if it occurs.
    */
-   _onInviteFriendsButton() {
+  _onInviteFriendsButton() {
     if (this.isShopOpened) return;
-    alert("friends button down");
+    this.options = {
+      method: 'apprequests',
+      message: 'Play MoveUp with me!'
+    };
+    this.onSuccess = function (result) {
+      alert("Success with invite");
+    };
+    this.onError = function (msg) {
+      alert("Failed with invite");
+    };
+
+    facebookConnectPlugin.showDialog(this.options, this.onSuccess, this.onError);
   }
 
   /**
@@ -195,21 +226,20 @@ export default class Preload extends Phaser.State {
       // Close Shop with its ShopItems.
       this.shop.show();
       this.isShopOpened = false;
-      alert("close the shop popup");
     } else {
       // Close the game.
-      alert("close the game");
-    }  
+      navigator.app.exitApp();
+    }
   }
 
   /**
    * @function createTitleText
    * @description Create 'MoveUp' text.
    */
-   createTitleText() {
+  createTitleText() {
     this.titleText = this.add.text(this.game.width * 0.5, this.game.height * 0.3, 'MoveUp', styleForTitleText);
     this.titleText.anchor.setTo(0.5);
-    this.titleText.fontWeight="bold";
+    this.titleText.fontWeight = "bold";
     this.titleText.stroke = '#000000';
     this.titleText.strokeThickness = 7;
   }

@@ -88,7 +88,7 @@ export default class Main extends Phaser.State {
     // create music button
     this.createMusicOnButton();
     this.createMusicOffButton();
-    
+
     this._checkMusicState();
 
     // Create mobile controls.
@@ -96,7 +96,7 @@ export default class Main extends Phaser.State {
       this.createVirtualJoystick();
       this.createJumpButton();
       this.scaleVirtualJoyStickIfNotIphone(); // Scale virtual joystick if this is not iphone.
-  
+
       this.dPad.alignBottomLeft(1); // Align virtual joystick.
     }
 
@@ -109,9 +109,7 @@ export default class Main extends Phaser.State {
    * @description Update and re-drawing the game objects, running all the time till the state is active.
    */
   update() {
-
     this.player.body.velocity.x = 0; // Not move the player if no input action is found.
-
 
     this.physics.arcade.collide(this.player, this.platforms); // Make the sprite collide with the ground layer.
 
@@ -142,7 +140,6 @@ export default class Main extends Phaser.State {
         this.playerMovingAnimation();
         this.player.body.velocity.x = this.movingVelocity;
       }
-
     }
   }
 
@@ -152,10 +149,10 @@ export default class Main extends Phaser.State {
    * @descripton Initialize basic game data.
    */
   setInitData() {
-		this.movingVelocity = movingVelocity;
+    this.movingVelocity = movingVelocity;
     this.jumpingVelocity = jumpingVelocity;
     this.isGameOverVisible = false; // Restrict calling game over popup many times.
-		this.spacing = 450; // Spacing for initial platforms.
+    this.spacing = 450; // Spacing for initial platforms.
     this.platformSpeed = platformSpeed; // Platform speed (timer).
 
     // Settings for desktop.
@@ -164,7 +161,7 @@ export default class Main extends Phaser.State {
       this.platformSpeed -= 500;
     }
 
-		this.score = 0; // Set up initial score.
+    this.score = 0; // Set up initial score.
   }
 
   /**
@@ -229,10 +226,12 @@ export default class Main extends Phaser.State {
    * @description Handle game over.
    */
   gameOver() {
+    showInterstitialFunc();
     this.gameOverPopup.showGameOver(this.score);
     this.physics.arcade.isPaused = true;
     this.scoreLabel.visible = false;
     this.time.removeAll();
+    localStorage.scoreRate = 1; // Set to default scoreRate on game over.
   }
 
   /**
@@ -245,7 +244,7 @@ export default class Main extends Phaser.State {
     let tile = this.platforms.getFirstDead(); // Get a tile that is not currently on screen.
 
     // Reset it to the specified coordinates.
-		tile.reset(x, y);
+    tile.reset(x, y);
     tile.body.immovable = true;
     tile.body.velocity.y = 150;
 
@@ -261,7 +260,7 @@ export default class Main extends Phaser.State {
    */
   addPlatform(y) {
     // If no y position is supplied, render it just outside of the screen. Making here === undefined creates a weird behaviour with creating tiles, so it has to be like that.
-    if (typeof(y) == 'undefined') {
+    if (typeof (y) == 'undefined') {
       y = -this.tileHeight;
       this.incrementScore(); // Increment the players score.
     }
@@ -316,7 +315,7 @@ export default class Main extends Phaser.State {
       font: scoreFont,
       fill: '#fff'
     });
-		this.scoreLabel.anchor.setTo(0.5, 0.5);
+    this.scoreLabel.anchor.setTo(0.5, 0.5);
     this.scoreLabel.align = 'center';
     this.scoreLabel.stroke = '#627577';
     this.scoreLabel.strokeThickness = 10;
@@ -327,7 +326,7 @@ export default class Main extends Phaser.State {
    * @description Score manipulation.
    */
   incrementScore() {
-    this.score += 1;
+    this.score += parseInt(localStorage.scoreRate) * 5;
     this.scoreLabel.text = this.score;
   }
 
@@ -343,19 +342,19 @@ export default class Main extends Phaser.State {
    * @function createMusicOnButton
    * @description creates music on button
    */
-  createMusicOnButton(){
+  createMusicOnButton() {
     this.musicOnButton = this.add.button(this.world.width - 120, 30, "guisheet", this._onMusicOnButtonDown, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.musicOnButtonIcon = this.add.image(this.world.width - 120, 30, "musicon");
     this.musicOnButton.scale.x = this.musicOnButton.scale.y = this.musicOnButtonIcon.scale.x = this.musicOnButtonIcon.scale.y = UI_SCALE_FACTOR;
   }
-  
+
   /**
    * @function createMusicOffButton
    * @description creates music on button
    */
-  createMusicOffButton(){
+  createMusicOffButton() {
     this.musicOffButton = this.add.button(this.world.width - 120, 30, "guisheet", this._onMusicOffButtonDown, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
-    this.musicOffButtonIcon = this.add.image(this.world.width - 120, 30,"musicoff");
+    this.musicOffButtonIcon = this.add.image(this.world.width - 120, 30, "musicoff");
     this.musicOffButton.scale.x = this.musicOffButton.scale.y = this.musicOffButtonIcon.scale.x = this.musicOffButtonIcon.scale.y = UI_SCALE_FACTOR;
     this.musicOffButton.visible = false;
     this.musicOffButtonIcon.visible = false;
@@ -365,7 +364,7 @@ export default class Main extends Phaser.State {
    * @function _onMusicOnButtonDown
    * @description Listen on input down of music on button and perform necessary actions if it occurs.
    */
-  _onMusicOnButtonDown(){
+  _onMusicOnButtonDown() {
     this.sound.mute = true;
     this.musicOnButton.visible = false;
     this.musicOnButtonIcon.visible = false;
@@ -377,8 +376,8 @@ export default class Main extends Phaser.State {
    * @function _onMusicOffButtonDown
    * @description Listen on input down of music off button and perform necessary actions if it occurs.
    */
-   _onMusicOffButtonDown(){
-     this.sound.mute = false;
+  _onMusicOffButtonDown() {
+    this.sound.mute = false;
     this.musicOnButton.visible = true;
     this.musicOnButtonIcon.visible = true;
     this.musicOffButton.visible = false;
@@ -389,11 +388,11 @@ export default class Main extends Phaser.State {
    * @function _checkMusicState
    * @description will check the last state of the music buttons and do relavent action.
    */
-   _checkMusicState(){
-     if (this.sound.mute) {
-       this._onMusicOnButtonDown();
-     } else {
-       this._onMusicOffButtonDown();
-     }
+  _checkMusicState() {
+    if (this.sound.mute) {
+      this._onMusicOnButtonDown();
+    } else {
+      this._onMusicOffButtonDown();
+    }
   }
 }
