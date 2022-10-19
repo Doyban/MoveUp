@@ -1,0 +1,27 @@
+make --dry-run --always-make --keep-going --print-directory
+objc[810]: Class AMSupportURLConnectionDelegate is implemented in both /usr/lib/libauthinstall.dylib (0x21dd7eb90) and /Library/Apple/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x1045d02c8). One of the two will be used. Which one is undefined.
+ 
+objc[810]: Class AMSupportURLSession is implemented in both /usr/lib/libauthinstall.dylib (0x21dd7ebe0) and /Library/Apple/System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/MobileDevice (0x1045d0318). One of the two will be used. Which one is undefined.
+ 
+make: Entering directory `/Users/jeko/Documents/billing/cordova-plugin-purchase'
+echo ""
+echo "Usage: make <target>"
+echo ""
+echo "available targets:"
+echo "    build ............. Generate javascript files for iOS and Android."
+echo "    tests ............. Run all tests."
+echo "    test-js ........... Test javascript files for errors."
+echo "    test-js-coverage .. Test javascript with coverage information."
+echo "    test-install ...... Test plugin installation on iOS and Android."
+echo "    doc-api ........... Generate API documentation into doc/api.md"
+echo "    doc-contrib ....... Generate Contributor Guide into doc/contributor-guide.md"
+echo "    clean ............. Cleanup the project (temporary and generated files)."
+echo ""
+echo "extra targets"
+echo "    all ............ Generate javascript files and documentation"
+echo ""
+echo "(c)2014-2019, Jean-Christophe Hoelt <hoelt@fovea.cc>"
+echo ""
+ 
+make: Leaving directory `/Users/jeko/Documents/billing/cordova-plugin-purchase'
+ 
