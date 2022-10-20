@@ -54,7 +54,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-x-socialsharing": "5.6.8",
     "cordova-plugin-purchase": "11.0.0",
     "cordova-plugin-whitelist": "1.3.5",
-    "cordova-plugin-customurlscheme": "5.0.2",
-    "cordova-universal-links-plugin": "1.2.1"
+    "cordova-plugin-customurlscheme": "5.0.2"
   };
 });

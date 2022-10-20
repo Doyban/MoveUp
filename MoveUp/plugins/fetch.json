@@ -90,13 +90,5 @@
     "variables": {
       "URL_SCHEME": "com.doyban.moveup"
     }
-  },
-  "cordova-universal-links-plugin": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-universal-links-plugin-fix@*"
-    },
-    "is_top_level": true,
-    "variables": {}
   }
 }
