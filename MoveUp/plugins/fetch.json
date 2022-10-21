@@ -90,5 +90,16 @@
     "variables": {
       "URL_SCHEME": "com.doyban.moveup"
     }
+  },
+  "admob-plus-cordova": {
+    "source": {
+      "type": "registry",
+      "id": "admob-plus-cordova@1.28.0"
+    },
+    "is_top_level": true,
+    "variables": {
+      "APP_ID_ANDROID": "ca-app-pub-4865595196880143/6610299599",
+      "APP_ID_IOS": "ca-app-pub-xxx~xxx"
+    }
   }
 }

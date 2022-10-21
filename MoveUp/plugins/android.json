@@ -42,6 +42,11 @@
     },
     "cordova-universal-links-plugin": {
       "PACKAGE_NAME": "com.doyban.moveup"
+    },
+    "admob-plus-cordova": {
+      "APP_ID_ANDROID": "ca-app-pub-4865595196880143/6610299599",
+      "PLAY_SERVICES_VERSION": "20.6.0",
+      "PACKAGE_NAME": "com.doyban.moveup"
     }
   },
   "dependent_plugins": {

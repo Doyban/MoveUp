@@ -1,7 +1,7 @@
 {
   "name": "com.doyban.moveup",
   "displayName": "MoveUp",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Move up all the way to infinity",
   "private": true,
   "scripts": {
@@ -67,6 +67,11 @@
         "ANDROID_SCHEME": " ",
         "ANDROID_HOST": " ",
         "ANDROID_PATHPREFIX": "/"
+      },
+      "admob-plus-cordova": {
+        "APP_ID_ANDROID": "ca-app-pub-4865595196880143/6610299599",
+        "APP_ID_IOS": "ca-app-pub-xxx~xxx",
+        "PLAY_SERVICES_VERSION": "20.6.0"
       }
     }
   }
