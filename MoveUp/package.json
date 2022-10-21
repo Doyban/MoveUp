@@ -1,7 +1,7 @@
 {
   "name": "com.doyban.moveup",
   "displayName": "MoveUp",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Move up all the way to infinity",
   "private": true,
   "scripts": {
