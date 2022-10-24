@@ -49,7 +49,7 @@
             <access origin="https://api.facebook.com" />
             <access origin="https://*.fbcdn.net" />
             <access origin="https://*.akamaihd.net" />
-            <preference name="android-minSdkVersion" value="15" />
+            <preference name="android-minSdkVersion" value="16" />
         </config-file>
 
         <source-file src="src/android/facebookconnect.xml" target-dir="res/values" />
@@ -216,7 +216,7 @@
             <access origin="https://*.fbcdn.net" />
             <access origin="https://*.akamaihd.net" />
         </config-file>
-        
+
         <hook type="after_prepare" src="scripts/browser/after_prepare.js" />
     </platform>
 </plugin>
