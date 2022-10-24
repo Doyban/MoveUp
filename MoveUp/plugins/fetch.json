@@ -94,12 +94,17 @@
   "admob-plus-cordova": {
     "source": {
       "type": "registry",
-      "id": "admob-plus-cordova@1.28.0"
+      "id": "admob-plus-cordova@^1.28.0"
     },
     "is_top_level": true,
-    "variables": {
-      "APP_ID_ANDROID": "ca-app-pub-4865595196880143/6610299599",
-      "APP_ID_IOS": "ca-app-pub-xxx~xxx"
-    }
+    "variables": {}
+  },
+  "cordova-android-play-services-gradle-release": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-android-play-services-gradle-release"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

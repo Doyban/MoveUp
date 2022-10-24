@@ -39,14 +39,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-universal-links-plugin.universalLinks",
-      "file": "plugins/cordova-universal-links-plugin/www/universal_links.js",
-      "pluginId": "cordova-universal-links-plugin",
-      "clobbers": [
-        "universalLinks"
-      ]
-    },
-    {
       "id": "admob-plus-cordova.AdMob",
       "file": "plugins/admob-plus-cordova/www/admob.js",
       "pluginId": "admob-plus-cordova",
@@ -63,7 +55,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-purchase": "11.0.0",
     "cordova-plugin-whitelist": "1.3.5",
     "cordova-plugin-customurlscheme": "5.0.2",
-    "cordova-universal-links-plugin": "1.2.1",
     "admob-plus-cordova": "1.28.0"
   };
 });

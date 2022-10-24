@@ -6,4 +6,4 @@ dist
 /plugins/
 /platforms/
 *.keystore
-*.properties
+/release-signing.properties
