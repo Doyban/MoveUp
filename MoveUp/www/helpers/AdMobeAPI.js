@@ -3,7 +3,7 @@ function showInterstitialFunc() {
 
   document.addEventListener('deviceready', async () => {
     interstitial = new admob.InterstitialAd({
-      adUnitId: 'ca-app-pub-4865595196880143~2862626271',
+      adUnitId: 'ca-app-pub-4865595196880143/6610299599',
     })
 
     interstitial.on('load', (evt) => {
