@@ -226,12 +226,35 @@ export default class Main extends Phaser.State {
    * @description Handle game over.
    */
   gameOver() {
-    showInterstitialFunc();
+    this.showAdMobAds();
     this.gameOverPopup.showGameOver(this.score);
     this.physics.arcade.isPaused = true;
     this.scoreLabel.visible = false;
     this.time.removeAll();
     localStorage.scoreRate = 1; // Set to default scoreRate on game over.
+  }
+
+  /**
+   * @function showAdMobAds
+   * @description Show AdMob ads.
+   */
+  showAdMobAds() {
+    let interstitial;
+
+    document.addEventListener('deviceready', async () => {
+      interstitial = new admob.InterstitialAd({
+        adUnitId: 'ca-app-pub-4865595196880143/6610299599',
+      })
+
+      await interstitial.load()
+      await interstitial.show()
+    }, false);
+
+    document.addEventListener('admob.ad.dismiss', async () => {
+      // Once a interstitial ad is shown, it cannot be shown again.
+      // Starts loading the next interstitial ad as soon as it is dismissed.
+      await interstitial.load()
+    });
   }
 
   /**
