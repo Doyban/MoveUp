@@ -142,6 +142,8 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "../cordova-plugin-buildinfo/moveup-BuildInfo.gradle"
+apply from: "../cordova-plugin-browsertab/moveup-BrowserTab.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -352,6 +354,7 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "com.android.billingclient:billing:4.0.0"
     implementation "com.google.android.gms:play-services-ads:20.6.0"
+    implementation "androidx.browser:browser:1.2.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 

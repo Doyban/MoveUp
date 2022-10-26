@@ -1,7 +1,7 @@
 {
   "name": "com.doyban.moveup",
   "displayName": "MoveUp",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Move up all the way to infinity",
   "private": true,
   "scripts": {
@@ -12,7 +12,11 @@
   },
   "author": "Doyban",
   "dependencies": {
+    "cordova-plugin-browsertab": "0.2.0",
+    "cordova-plugin-buildinfo": "4.0.0",
+    "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-facebook-connect": "3.2.0",
+    "cordova-plugin-inappbrowser": "5.0.0",
     "phaser-ce": "^2.12.0"
   },
   "devDependencies": {
@@ -28,6 +32,7 @@
     "cordova-plugin-purchase": "^11.0.0",
     "cordova-plugin-whitelist": "^1.3.5",
     "cordova-plugin-x-socialsharing": "^5.6.8",
+    "cordova-universal-links-plugin-fix": "^1.2.1",
     "delete": "^1.1.0",
     "es6-promise-plugin": "^4.2.2",
     "fs-extra": "^7.0.1",
@@ -68,7 +73,10 @@
         "ANDROID_HOST": " ",
         "ANDROID_PATHPREFIX": "/"
       },
-      "admob-plus-cordova": {}
+      "admob-plus-cordova": {},
+      "cordova-plugin-buildinfo": {},
+      "cordova-plugin-browsertab": {},
+      "cordova-plugin-inappbrowser": {}
     }
   }
 }
