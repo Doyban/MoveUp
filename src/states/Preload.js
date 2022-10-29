@@ -1,6 +1,7 @@
 import {
   styleForPlayText, styleForTitleText
 } from '../helpers/gameConstants';
+import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth/cordova";
 import { Shop } from '../components/Shop';
 
 export const UI_SCALE_FACTOR = 2;
@@ -194,7 +195,62 @@ export default class Preload extends Phaser.State {
    */
   _onLoginButton() {
     if (this.isShopOpened) return;
-    global.FirebaseAPI.prototype.loginUser(); // Log in user through Firebase.
+    // const provider = new GoogleAuthProvider();
+    var provider = new GoogleAuthProvider(); // Create an instance of the Google provider object.
+    const auth = getAuth();
+
+    signInWithRedirect(auth, new GoogleAuthProvider())
+      .then(() => {
+        return getRedirectResult(auth);
+      })
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+
+        // This gives you a Google Access Token.
+        // You can use it to access the Google API.
+        const token = credential.accessToken;
+
+        // The signed-in user info.
+        const user = result.user;
+        alert(token);
+        alert(result.credential);
+        alert(result);
+        alert(user);
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        alert(errorCode);
+        alert(error);
+        var errorMessage = error.message;
+        alert(errorMessage);
+        // The email of the user's account used.
+        var email = error.email;
+        alert(email);
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        alert(credential);
+      });
+
+    // auth().signInWithRedirect(provider); // Sign in by redirecting to the sign-in page.
+    // const auth = getAuth();
+    // getRedirectResult(auth)
+    //   .then((result) => {
+    //     const credential = GoogleAuthProvider.credentialFromResult(result);
+    //     if (credential) {
+    //       // This gives you a Google Access Token.
+    //       // You can use it to access the Google API.
+    //       const token = credential.accessToken;
+    //       // The signed-in user info.
+    //       const user = result.user;
+    //       // ...
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     // Handle Errors here.
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //   });
   }
 
   /**

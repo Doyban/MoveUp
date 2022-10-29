@@ -1,7 +1,3 @@
-# THIS IS A FORK...
-...of an unmaintained cordova plugin with unmerged pull request
-https://github.com/nordnet/cordova-universal-links-plugin/pull/122
-
 # Cordova Universal Links Plugin
 This Cordova plugin adds support for opening an application from the browser when user clicks on the link. Better known as:
 - [Universal Links on iOS](https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html)

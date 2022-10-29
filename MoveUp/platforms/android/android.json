@@ -33,7 +33,7 @@
               "count": 1
             },
             {
-              "xml": "<preference name=\"android-minSdkVersion\" value=\"16\" />",
+              "xml": "<preference name=\"android-minSdkVersion\" value=\"19\" />",
               "count": 1
             },
             {
@@ -53,10 +53,6 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"UniversalLinks\"><param name=\"android-package\" value=\"com.nordnetab.cordova.ul.UniversalLinksPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"AdMob\"><param name=\"android-package\" value=\"admob.plus.cordova.AdMob\" /></feature>",
               "count": 1
             },
@@ -70,6 +66,10 @@
             },
             {
               "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"UniversalLinks\"><param name=\"android-package\" value=\"com.nordnetab.cordova.ul.UniversalLinksPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ]
@@ -156,7 +156,7 @@
             },
             {
               "xml": "<meta-data android:name=\"com.google.android.gms.ads.APPLICATION_ID\" android:value=\"ca-app-pub-4865595196880143~2862626271\" />",
-              "count": 46
+              "count": 94
             },
             {
               "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize\" android:excludeFromRecents=\"true\" android:name=\"com.google.android.gms.ads.AdActivity\" android:noHistory=\"true\" />",
@@ -235,6 +235,9 @@
     },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.doyban.moveup"
+    },
+    "cordova-universal-links-plugin": {
+      "PACKAGE_NAME": "com.doyban.moveup"
     }
   },
   "dependent_plugins": {},
@@ -308,6 +311,14 @@
       "clobbers": [
         "cordova.InAppBrowser.open"
       ]
+    },
+    {
+      "id": "cordova-universal-links-plugin.universalLinks",
+      "file": "plugins/cordova-universal-links-plugin/www/universal_links.js",
+      "pluginId": "cordova-universal-links-plugin",
+      "clobbers": [
+        "universalLinks"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -321,6 +332,7 @@
     "admob-plus-cordova": "1.28.0",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-browsertab": "0.2.0",
-    "cordova-plugin-inappbrowser": "5.0.0"
+    "cordova-plugin-inappbrowser": "5.0.0",
+    "cordova-universal-links-plugin": "1.2.1"
   }
 }

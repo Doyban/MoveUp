@@ -2,6 +2,7 @@ import {
   gameWidth,
   gameHeight
 } from './helpers/gameConstants.js';
+import { initializeApp } from 'firebase/app';
 import Boot from './states/Boot.js';
 import Main from './states/Main.js';
 import Preload from './states/Preload.js';
@@ -19,8 +20,8 @@ class Game extends Phaser.Game {
   constructor() {
     super(gameWidth, gameHeight, Phaser.CANVAS, 'content', null, true); // Create phaser game.
 
-    // Initialize Firebase
-    const config = {
+    // Initialize Firebase.
+    const firebaseConfig = {
       apiKey: "AIzaSyBAIOhzJ5qygFDxxURHRRxdyb9hpEjYdi4",
       authDomain: "moveup-fd592.firebaseapp.com",
       projectId: "moveup-fd592",
@@ -29,7 +30,7 @@ class Game extends Phaser.Game {
       appId: "1:913523773880:web:44ddca692ec36a8cd7bf4d",
       measurementId: "G-8V8K3WE4R3"
     };
-    firebase.initializeApp(config);
+    initializeApp(firebaseConfig);
 
     // Add all states.
     this.state.add('Boot', Boot);

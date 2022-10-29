@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.doyban.moveup" version="1.3.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.doyban.moveup" version="1.3.2" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="FacebookConnectPlugin">
         <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
         <param name="onload" value="true" />
@@ -22,10 +22,6 @@
     <feature name="LaunchMyApp">
         <param name="android-package" value="nl.xservices.plugins.LaunchMyApp" />
     </feature>
-    <feature name="UniversalLinks">
-        <param name="android-package" value="com.nordnetab.cordova.ul.UniversalLinksPlugin" />
-        <param name="onload" value="true" />
-    </feature>
     <feature name="AdMob">
         <param name="android-package" value="admob.plus.cordova.AdMob" />
     </feature>
@@ -37,6 +33,10 @@
     </feature>
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="UniversalLinks">
+        <param name="android-package" value="com.nordnetab.cordova.ul.UniversalLinksPlugin" />
+        <param name="onload" value="true" />
     </feature>
     <name>MoveUp</name>
     <description>Move up all the way to infinity</description>
@@ -50,7 +50,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <universal-links>
-        <host name="moveup.page.link" scheme="https" />
+        <host name="moveup2.page.link" scheme="https" />
         <host name="moveup-fd592.firebaseapp.com" scheme="https">
             <path url="/__/auth/callback" />
         </host>

@@ -69,6 +69,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.InAppBrowser.open"
       ]
+    },
+    {
+      "id": "cordova-universal-links-plugin.universalLinks",
+      "file": "plugins/cordova-universal-links-plugin/www/universal_links.js",
+      "pluginId": "cordova-universal-links-plugin",
+      "clobbers": [
+        "universalLinks"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -82,6 +90,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "admob-plus-cordova": "1.28.0",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-browsertab": "0.2.0",
-    "cordova-plugin-inappbrowser": "5.0.0"
+    "cordova-plugin-inappbrowser": "5.0.0",
+    "cordova-universal-links-plugin": "1.2.1"
   };
 });

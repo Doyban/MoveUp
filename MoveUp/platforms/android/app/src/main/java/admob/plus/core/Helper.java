@@ -62,8 +62,8 @@ public class Helper {
     }
 
     @Nullable
-    public static ViewGroup getParentView(@Nullable View view) {
-        return view == null ? null : (ViewGroup) view.getParent();
+    public static ViewGroup getParentView(@Nullable View view) {-
+        return view == null ? null : (ViewGroup) view.getParent();-
     }
 
     @Nullable

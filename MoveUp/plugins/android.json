@@ -53,6 +53,9 @@
     },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.doyban.moveup"
+    },
+    "cordova-universal-links-plugin": {
+      "PACKAGE_NAME": "com.doyban.moveup"
     }
   },
   "dependent_plugins": {
