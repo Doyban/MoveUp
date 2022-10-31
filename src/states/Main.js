@@ -129,6 +129,7 @@ export default class Main extends Phaser.State {
     }
     // Check if the player is touching the bottom.
     if (this.player.body.position.y >= this.world.height - this.player.body.height && !this.isGameOverVisible) {
+      this.showAdMobAds();
       this.gameOver();
     }
     // Virtual joystick controls.
@@ -226,11 +227,11 @@ export default class Main extends Phaser.State {
    * @description Handle game over.
    */
   gameOver() {
-    this.showAdMobAds();
     this.gameOverPopup.showGameOver(this.score);
     this.physics.arcade.isPaused = true;
     this.scoreLabel.visible = false;
     this.time.removeAll();
+    localStorage.score = this.score; // Set score to possibly share it in game over popup.
     localStorage.scoreRate = 1; // Set to default scoreRate on game over.
   }
 

@@ -58,8 +58,7 @@ export class ShopItem {
    * @description Listen on input down of ShopItem and perform necessary actions if it occurs.
    */
   onItemClicked() {
-    alert(`item clicked ${this.multiplier} + scorex${this.multiplier}`)
-    var that = this;
+    const that = this;
     store.refresh();
 
     // Prepare product.

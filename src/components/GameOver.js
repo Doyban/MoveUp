@@ -203,24 +203,23 @@ export default class GameOver {
    * @description Listen on input down of share button and perform necessary actions if it occurs.
    */
   _onShareButtonClicked() {
-    // This is the complete list of currently supported params you can pass to the plugin (all optional)
+    // Setting up configuration for the event.
     const options = {
       message: 'Play MoveUp!', // not supported on some apps (Facebook, Instagram)
-      subject: 'Play MoveUp!', // fi. for email
-      files: ['https://doyban.com/logos/piratebay.png', 'https://doyban.com/logos/moveup.png'], // an array of filenames either locally or remotely
+      subject: 'My score in MoveUp is ' + localStorage.score + '!', // fi. for email
+      files: ['./../assets/images/logo.png'], // an array of filenames either locally or remotely
       url: 'https://doyban.com/moveup',
     };
 
-    const onSuccess = function (result) {
-      alert("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
-      alert("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+    // Event handlers.
+    const onSuccess = () => {
+      alert("Sharing result successful.");
+    };
+    const onError = () => {
+      alert("Sharing result unsuccessful.");
     };
 
-    const onError = function (msg) {
-      alert("Sharing failed with message: " + msg);
-    };
-
-    window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+    window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError); // Cordova plugin execution.
   }
 
   /**

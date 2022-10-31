@@ -2,7 +2,6 @@ import {
   styleForPlayText, styleForTitleText
 } from '../helpers/gameConstants';
 import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth/cordova";
-import { Shop } from '../components/Shop';
 
 export const UI_SCALE_FACTOR = 2;
 
@@ -169,24 +168,23 @@ export default class Preload extends Phaser.State {
   _onShareButton() {
     if (this.isShopOpened) return;
 
-    // This is the complete list of currently supported params you can pass to the plugin (all optional)
+    // Setting up configuration for the event.
     const options = {
       message: 'Play MoveUp!', // not supported on some apps (Facebook, Instagram)
-      subject: 'Play MoveUp!', // fi. for email
-      files: ['https://doyban.com/logos/piratebay.png', 'https://doyban.com/logos/moveup.png'], // an array of filenames either locally or remotely
+      subject: 'Cool game to be played :-)', // fi. for email
+      files: ['./../assets/images/logo.png'], // an array of filenames either locally or remotely
       url: 'https://doyban.com/moveup',
     };
 
-    const onSuccess = function (result) {
-      alert("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
-      alert("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+    // Event handlers.
+    const onSuccess = () => {
+      alert("Sharing successful.");
+    };
+    const onError = () => {
+      alert("Sharing unsuccessful.");
     };
 
-    const onError = function (msg) {
-      alert("Sharing failed with message: " + msg);
-    };
-
-    window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+    window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError); // Cordova plugin execution.
   }
 
   /**
@@ -195,62 +193,26 @@ export default class Preload extends Phaser.State {
    */
   _onLoginButton() {
     if (this.isShopOpened) return;
-    // const provider = new GoogleAuthProvider();
-    var provider = new GoogleAuthProvider(); // Create an instance of the Google provider object.
-    const auth = getAuth();
+    this.loginUsingFirebase();
+  }
 
+  /**
+   * @function loginUsingFirebase
+   * @description Login the user using Firebase Google authentication.
+   */
+  loginUsingFirebase() {
+    const auth = getAuth(); // Create an instance of the authentication object.
+
+    // Sign in by redirecting to the sign-in page.
     signInWithRedirect(auth, new GoogleAuthProvider())
       .then(() => {
         return getRedirectResult(auth);
       })
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-
-        // This gives you a Google Access Token.
-        // You can use it to access the Google API.
-        const token = credential.accessToken;
-
-        // The signed-in user info.
-        const user = result.user;
-        alert(token);
-        alert(result.credential);
-        alert(result);
-        alert(user);
-        // ...
-      }).catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        alert(errorCode);
-        alert(error);
-        var errorMessage = error.message;
-        alert(errorMessage);
-        // The email of the user's account used.
-        var email = error.email;
-        alert(email);
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        alert(credential);
+      .then(() => {
+        alert('Authentication successful.')
+      }).catch(() => {
+        alert('Authentication unsuccessful.')
       });
-
-    // auth().signInWithRedirect(provider); // Sign in by redirecting to the sign-in page.
-    // const auth = getAuth();
-    // getRedirectResult(auth)
-    //   .then((result) => {
-    //     const credential = GoogleAuthProvider.credentialFromResult(result);
-    //     if (credential) {
-    //       // This gives you a Google Access Token.
-    //       // You can use it to access the Google API.
-    //       const token = credential.accessToken;
-    //       // The signed-in user info.
-    //       const user = result.user;
-    //       // ...
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     // Handle Errors here.
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //   });
   }
 
   /**
@@ -259,18 +221,22 @@ export default class Preload extends Phaser.State {
    */
   _onInviteFriendsButton() {
     if (this.isShopOpened) return;
-    this.options = {
+
+    // Setting up configuration for the event.
+    const options = {
       method: 'apprequests',
       message: 'Play MoveUp with me!'
     };
-    this.onSuccess = function (result) {
-      alert("Success with invite");
+
+    // Event handlers.
+    const onSuccess = () => {
+      alert("Inviting friends successful.");
     };
-    this.onError = function (msg) {
-      alert("Failed with invite");
+    const onError = () => {
+      alert("Inviting friends unsuccessful.");
     };
 
-    facebookConnectPlugin.showDialog(this.options, this.onSuccess, this.onError);
+    facebookConnectPlugin.showDialog(options, onSuccess, onError); // Cordova plugin execution.
   }
 
   /**
