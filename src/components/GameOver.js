@@ -207,7 +207,7 @@ export default class GameOver {
     const options = {
       message: 'Play MoveUp!', // not supported on some apps (Facebook, Instagram)
       subject: 'My score in MoveUp is ' + localStorage.score + '!', // fi. for email
-      files: ['./../assets/images/logo.png'], // an array of filenames either locally or remotely
+      files: ['www/assets/images/logo.png'], // an array of filenames either locally or remotely
       url: 'https://doyban.com/moveup',
     };
 

@@ -172,7 +172,7 @@ export default class Preload extends Phaser.State {
     const options = {
       message: 'Play MoveUp!', // not supported on some apps (Facebook, Instagram)
       subject: 'Cool game to be played :-)', // fi. for email
-      files: ['./../assets/images/logo.png'], // an array of filenames either locally or remotely
+      files: ['www/assets/images/logo.png'], // an array of filenames either locally or remotely
       url: 'https://doyban.com/moveup',
     };
 
