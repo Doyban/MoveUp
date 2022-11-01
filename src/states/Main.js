@@ -350,7 +350,7 @@ export default class Main extends Phaser.State {
    * @description Score manipulation.
    */
   incrementScore() {
-    this.score += parseInt(localStorage.scoreRate) * 5;
+    this.score += parseInt(localStorage.scoreRate);
     this.scoreLabel.text = this.score;
   }
 
