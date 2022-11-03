@@ -124,7 +124,7 @@ export default class GameOver {
    * @function createHomeButton
    * @description Create home button.
    */
-   createHomeButton() {
+  createHomeButton() {
     this.buttonHome = this.game.add.button(0, 0, 'guisheet', this._onHomeButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.buttonHome.anchor.setTo(0.5);
     this.buttonHome.alignTo(this.gameOverBackground, Phaser.BOTTOM_RIGHT, -50, -90);
@@ -140,7 +140,7 @@ export default class GameOver {
    * @function _onHomeButtonClicked
    * @description Listen on input down of home button and perform necessary actions if it occurs.
    */
-   _onHomeButtonClicked() {
+  _onHomeButtonClicked() {
     if (this.gameOverMusic.isPlaying) {
       this.gameOverMusic.stop();
     }
@@ -154,7 +154,7 @@ export default class GameOver {
    * @function createRetryButton
    * @description Create retry button.
    */
-   createRetryButton() {
+  createRetryButton() {
     this.buttonRetry = this.game.add.button(0, 0, 'guisheet', this._onRetryButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.buttonRetry.anchor.setTo(0.5);
     this.buttonRetry.alignTo(this.gameOverBackground, Phaser.BOTTOM_LEFT, -50, -90);
@@ -170,7 +170,7 @@ export default class GameOver {
    * @function createShareButton
    * @description Create share button.
    */
-   createShareButton() {
+  createShareButton() {
     this.buttonShare = this.game.add.button(0, 0, 'guisheet', this._onShareButtonClicked, this, 'yellow_button07.png', 'yellow_button08.png', 'yellow_button09.png', 'yellow_button10.png');
     this.buttonShare.anchor.setTo(0.5);
     this.buttonShare.alignTo(this.gameOverBackground, Phaser.BOTTOM_CENTER, 0, -90);
@@ -197,13 +197,29 @@ export default class GameOver {
     this.game.state.restart();
     this.gameOverBackground.visible = false;
   }
-  
+
   /**
    * @function _onShareButtonClicked
    * @description Listen on input down of share button and perform necessary actions if it occurs.
    */
   _onShareButtonClicked() {
-    alert("share button clicked");
+    // Setting up configuration for the event.
+    const options = {
+      message: 'Play MoveUp!', // not supported on some apps (Facebook, Instagram)
+      subject: 'My score in MoveUp is ' + localStorage.score + '!', // fi. for email
+      files: ['www/assets/images/logo.png'], // an array of filenames either locally or remotely
+      url: 'https://doyban.com/moveup',
+    };
+
+    // Event handlers.
+    const onSuccess = () => {
+      alert("Sharing result successful.");
+    };
+    const onError = () => {
+      alert("Sharing result unsuccessful.");
+    };
+
+    window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError); // Cordova plugin execution.
   }
 
   /**
