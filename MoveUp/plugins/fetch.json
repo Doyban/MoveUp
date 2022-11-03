@@ -54,25 +54,6 @@
       "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhBwTEHwiVVSnMuvojR/6Q7FW19bQH0wZ1AERajvxCyPQScF2Ptsp+wejCORTGUaBzv3wdKksmEe2O4YdFEJuQINEreXh0yjwEf86X6M6TFtlrGHh5dWt9pUcICmbslA9YcKolnXidZmBo6Ht1PA8es0eTizTQvDHgNkN0JDOnHCsK0i6p852wSIl8oizOp4BgsCd8kfHY6GqAXrgbyVo5i3dGDcJqnPuIdHKM7hyshuw75P8m8+24xHKBuUqMndxZMEeBhBcxBZHsVEhXLPiIY0sRiVMeNhCqvIAnVStRW/vUhQgu3NGeX7AAJFtowuoea0/41hr1/1FgoFQfa/p+wIDAQAB"
     }
   },
-  "cordova-plugin-whitelist": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-whitelist@1.3.5"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-facebook4": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-facebook4@*"
-    },
-    "is_top_level": true,
-    "variables": {
-      "APP_ID": "6121059601241660",
-      "APP_NAME": "MoveUp"
-    }
-  },
   "cordova-admob-sdklibs": {
     "source": {
       "type": "registry",

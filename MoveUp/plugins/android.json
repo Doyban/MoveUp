@@ -30,9 +30,6 @@
     "cordova-plugin-purchase": {
       "PACKAGE_NAME": "com.doyban.moveup"
     },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.doyban.moveup"
-    },
     "cordova-plugin-customurlscheme": {
       "URL_SCHEME": "com.doyban.moveup",
       "ANDROID_SCHEME": " ",
