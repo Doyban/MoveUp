@@ -148,7 +148,6 @@ export default class Preload extends Phaser.State {
     this.closeButton.scale.x = this.closeButton.scale.y = this.closeButtonIcon.scale.x = this.closeButtonIcon.scale.y = UI_SCALE_FACTOR;
 
     localStorage.scoreRate = localStorage.scoreRate || 1; // Initialize scoreRate.
-    initAd(); // Initialize AdMob.
   }
 
   /**

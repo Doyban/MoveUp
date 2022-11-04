@@ -60,6 +60,10 @@
         <param name="ios-package" value="CULPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="CDVWKWebViewFileXhr">
+        <param name="ios-package" value="CDVWKWebViewFileXhr" />
+        <param name="onload" value="true" />
+    </feature>
     <name>MoveUp</name>
     <description>Move up all the way to infinity</description>
     <author email="contact@doyban.com" href="https://doyban.com">Doyban</author>
@@ -71,6 +75,12 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <widget>
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="deployment-target" value="12.0" />
+        <preference name="SwiftVersion" value="5.3" />
+    </widget>
     <config-file parent="/manifest/application" target="AndroidManifest.xml">
         <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-4865595196880143~2862626271" />
     </config-file>

@@ -32,7 +32,19 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>fb6121059601241660</string>
-
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb6121059601241660</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb6121059601241660</string>
+          
         </array>
       </dict>
     </array>
@@ -265,11 +277,11 @@
       <string>UIInterfaceOrientationPortraitUpsideDown</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
   </dict>
 </plist>

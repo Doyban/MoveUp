@@ -57,6 +57,8 @@
 		F739D3AB969B402E92376689 /* CDVWKInAppBrowserUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A06C854549464E3FA536B0CB /* CDVWKInAppBrowserUIDelegate.m */; };
 		F829173D94B64184848A6A0C /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = B111501C24D24D45BC742041 /* SKProduct+LocalizedPrice.m */; };
 		FDB22507A14C4A76B1B2906F /* AMBGenerated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35297F9CE8D4CA7BA0A4A6B /* AMBGenerated.swift */; };
+		EBCDE9229AD14E458112D6ED /* CDVWKWebViewFileXhr.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E24FE05E2E4928B170C312 /* CDVWKWebViewFileXhr.m */; };
+		256796F5D27241658009E0AE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5ACF321B4BD45CEADB98DDB /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +183,9 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = MoveUp/config.xml; sourceTree = "<group>"; };
 		FB2DCC6EAC8C4AFAB5EE39D8 /* CDVInAppBrowserNavigationController.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVInAppBrowserNavigationController.m; path = "cordova-plugin-inappbrowser/CDVInAppBrowserNavigationController.m"; sourceTree = "<group>"; };
 		FE35D96AA7384F59A377554F /* SKProduct+LocalizedPrice.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "SKProduct+LocalizedPrice.h"; path = "cordova-plugin-purchase/SKProduct+LocalizedPrice.h"; sourceTree = "<group>"; };
+		52E24FE05E2E4928B170C312 /* CDVWKWebViewFileXhr.m */ = {isa = PBXFileReference; name = "CDVWKWebViewFileXhr.m"; path = "@globules-io/cordova-plugin-ios-xhr/CDVWKWebViewFileXhr.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		6D65F9F7C8384EE48615E870 /* CDVWKWebViewFileXhr.h */ = {isa = PBXFileReference; name = "CDVWKWebViewFileXhr.h"; path = "@globules-io/cordova-plugin-ios-xhr/CDVWKWebViewFileXhr.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		D5ACF321B4BD45CEADB98DDB /* WebKit.framework */ = {isa = PBXFileReference; name = "WebKit.framework"; path = "System/Library/Frameworks/WebKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +203,7 @@
 				F505708CCDFC4A30AAADE13B /* StoreKit.framework in Frameworks */,
 				6181F20FF1544CF7B045A8CD /* Social.framework in Frameworks */,
 				8F2355D1F1C34DC1BF322951 /* MessageUI.framework in Frameworks */,
+				256796F5D27241658009E0AE /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +293,7 @@
 				AF4A345BD9764F46B62085D3 /* StoreKit.framework */,
 				04A74E9349324C3BA42213BB /* Social.framework */,
 				860615C22B054F7BA31465B6 /* MessageUI.framework */,
+				D5ACF321B4BD45CEADB98DDB /* WebKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -370,6 +377,8 @@
 				2DBDBB942DA5467EB038866B /* CULConfigXmlParser.h */,
 				69037DE0F1534BE2ACD66F32 /* CULConfigJsonParser.h */,
 				60BBD918A9674E13A0BE5556 /* NSBundle+CULPlugin.h */,
+				52E24FE05E2E4928B170C312 /* CDVWKWebViewFileXhr.m */,
+				6D65F9F7C8384EE48615E870 /* CDVWKWebViewFileXhr.h */,
 			);
 			name = Plugins;
 			path = MoveUp/Plugins;
@@ -584,6 +593,7 @@
 				C09B40CF25524CC38E496039 /* CULConfigXmlParser.m in Sources */,
 				F68C8A469C444038B7335054 /* CULConfigJsonParser.m in Sources */,
 				011A97B81C9C4AEEB380BD80 /* NSBundle+CULPlugin.m in Sources */,
+				EBCDE9229AD14E458112D6ED /* CDVWKWebViewFileXhr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -77,6 +77,30 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "universalLinks"
       ]
+    },
+    {
+      "id": "@globules-io/cordova-plugin-ios-xhr.formdata-polyfill",
+      "file": "plugins/@globules-io/cordova-plugin-ios-xhr/src/www/ios/formdata-polyfill.js",
+      "pluginId": "@globules-io/cordova-plugin-ios-xhr",
+      "runs": true
+    },
+    {
+      "id": "@globules-io/cordova-plugin-ios-xhr.xhr-polyfill",
+      "file": "plugins/@globules-io/cordova-plugin-ios-xhr/src/www/ios/xhr-polyfill.js",
+      "pluginId": "@globules-io/cordova-plugin-ios-xhr",
+      "runs": true
+    },
+    {
+      "id": "@globules-io/cordova-plugin-ios-xhr.fetch-bootstrap",
+      "file": "plugins/@globules-io/cordova-plugin-ios-xhr/src/www/ios/fetch-bootstrap.js",
+      "pluginId": "@globules-io/cordova-plugin-ios-xhr",
+      "runs": true
+    },
+    {
+      "id": "@globules-io/cordova-plugin-ios-xhr.fetch-polyfill",
+      "file": "plugins/@globules-io/cordova-plugin-ios-xhr/src/www/ios/whatwg-fetch-2.0.3.js",
+      "pluginId": "@globules-io/cordova-plugin-ios-xhr",
+      "runs": true
     }
   ];
   module.exports.metadata = {
@@ -93,6 +117,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-purchase": "11.0.0",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.6.8",
-    "cordova-universal-links-plugin": "1.2.1"
+    "cordova-universal-links-plugin": "1.2.1",
+    "@globules-io/cordova-plugin-ios-xhr": "1.2.4"
   };
 });

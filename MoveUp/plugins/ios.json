@@ -58,6 +58,9 @@
     },
     "cordova-universal-links-plugin": {
       "PACKAGE_NAME": "com.doyban.moveup"
+    },
+    "@globules-io/cordova-plugin-ios-xhr": {
+      "PACKAGE_NAME": "com.doyban.moveup"
     }
   },
   "dependent_plugins": {

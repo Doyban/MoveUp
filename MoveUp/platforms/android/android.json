@@ -195,6 +195,9 @@
     },
     "cordova-universal-links-plugin": {
       "PACKAGE_NAME": "com.doyban.moveup"
+    },
+    "@globules-io/cordova-plugin-ios-xhr": {
+      "PACKAGE_NAME": "com.doyban.moveup"
     }
   },
   "dependent_plugins": {},
@@ -289,6 +292,7 @@
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-browsertab": "0.2.0",
     "cordova-plugin-inappbrowser": "5.0.0",
-    "cordova-universal-links-plugin": "1.2.1"
+    "cordova-universal-links-plugin": "1.2.1",
+    "@globules-io/cordova-plugin-ios-xhr": "1.2.4"
   }
 }

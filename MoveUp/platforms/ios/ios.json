@@ -10,7 +10,7 @@
           "/manifest/application": [
             {
               "xml": "<meta-data android:name=\"com.google.android.gms.ads.APPLICATION_ID\" android:value=\"ca-app-pub-4865595196880143~2862626271\" />",
-              "count": 9
+              "count": 11
             }
           ]
         }
@@ -72,6 +72,10 @@
             },
             {
               "xml": "<feature name=\"UniversalLinks\"><param name=\"ios-package\" value=\"CULPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"CDVWKWebViewFileXhr\"><param name=\"ios-package\" value=\"CDVWKWebViewFileXhr\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ]
@@ -239,6 +243,9 @@
     },
     "cordova-universal-links-plugin": {
       "PACKAGE_NAME": "com.doyban.moveup"
+    },
+    "@globules-io/cordova-plugin-ios-xhr": {
+      "PACKAGE_NAME": "com.doyban.moveup"
     }
   },
   "dependent_plugins": {},
@@ -320,6 +327,30 @@
       "clobbers": [
         "universalLinks"
       ]
+    },
+    {
+      "id": "@globules-io/cordova-plugin-ios-xhr.formdata-polyfill",
+      "file": "plugins/@globules-io/cordova-plugin-ios-xhr/src/www/ios/formdata-polyfill.js",
+      "pluginId": "@globules-io/cordova-plugin-ios-xhr",
+      "runs": true
+    },
+    {
+      "id": "@globules-io/cordova-plugin-ios-xhr.xhr-polyfill",
+      "file": "plugins/@globules-io/cordova-plugin-ios-xhr/src/www/ios/xhr-polyfill.js",
+      "pluginId": "@globules-io/cordova-plugin-ios-xhr",
+      "runs": true
+    },
+    {
+      "id": "@globules-io/cordova-plugin-ios-xhr.fetch-bootstrap",
+      "file": "plugins/@globules-io/cordova-plugin-ios-xhr/src/www/ios/fetch-bootstrap.js",
+      "pluginId": "@globules-io/cordova-plugin-ios-xhr",
+      "runs": true
+    },
+    {
+      "id": "@globules-io/cordova-plugin-ios-xhr.fetch-polyfill",
+      "file": "plugins/@globules-io/cordova-plugin-ios-xhr/src/www/ios/whatwg-fetch-2.0.3.js",
+      "pluginId": "@globules-io/cordova-plugin-ios-xhr",
+      "runs": true
     }
   ],
   "plugin_metadata": {
@@ -336,6 +367,7 @@
     "cordova-plugin-purchase": "11.0.0",
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.6.8",
-    "cordova-universal-links-plugin": "1.2.1"
+    "cordova-universal-links-plugin": "1.2.1",
+    "@globules-io/cordova-plugin-ios-xhr": "1.2.4"
   }
 }

@@ -90,6 +90,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-browsertab": "0.2.0",
     "cordova-plugin-inappbrowser": "5.0.0",
-    "cordova-universal-links-plugin": "1.2.1"
+    "cordova-universal-links-plugin": "1.2.1",
+    "@globules-io/cordova-plugin-ios-xhr": "1.2.4"
   };
 });

@@ -85,12 +85,12 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "es6-promise-plugin": "4.2.2",
     "cordova-plugin-x-socialsharing": "5.6.8",
     "cordova-plugin-purchase": "11.0.0",
-    "cordova-plugin-whitelist": "1.3.5",
     "cordova-plugin-customurlscheme": "5.0.2",
     "admob-plus-cordova": "1.28.0",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-browsertab": "0.2.0",
     "cordova-plugin-inappbrowser": "5.0.0",
-    "cordova-universal-links-plugin": "1.2.1"
+    "cordova-universal-links-plugin": "1.2.1",
+    "@globules-io/cordova-plugin-ios-xhr": "1.2.4"
   };
 });

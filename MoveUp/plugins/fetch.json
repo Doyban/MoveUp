@@ -130,5 +130,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "@globules-io/cordova-plugin-ios-xhr": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/globules-io/cordova-plugin-ios-xhr"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
