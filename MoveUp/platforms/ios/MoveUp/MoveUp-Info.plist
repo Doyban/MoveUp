@@ -32,7 +32,7 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>fb6121059601241660</string>
-          
+
         </array>
       </dict>
     </array>
@@ -49,7 +49,7 @@
     <key>FacebookHybridAppEvents</key>
     <string>false</string>
     <key>GADApplicationIdentifier</key>
-    <string>ca-app-pub-xxx~yyy</string>
+    <string>ca-app-pub-4865595196880143~1064049169</string>
     <key>GADDelayAppMeasurementInit</key>
     <true/>
     <key>LSApplicationQueriesSchemes</key>
@@ -265,11 +265,11 @@
       <string>UIInterfaceOrientationPortraitUpsideDown</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
   </dict>
 </plist>

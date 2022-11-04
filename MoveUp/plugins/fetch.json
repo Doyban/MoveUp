@@ -78,7 +78,10 @@
       "id": "admob-plus-cordova@^1.28.0"
     },
     "is_top_level": true,
-    "variables": {}
+    "variables": {
+      "APP_ID_ANDROID": "ca-app-pub-4865595196880143~2862626271",
+      "APP_ID_IOS": "ca-app-pub-4865595196880143~1064049169"
+    }
   },
   "cordova-android-play-services-gradle-release": {
     "source": {

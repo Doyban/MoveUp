@@ -244,7 +244,7 @@ export default class Main extends Phaser.State {
 
     document.addEventListener('deviceready', async () => {
       interstitial = new admob.InterstitialAd({
-        adUnitId: 'ca-app-pub-4865595196880143/6610299599',
+        adUnitId: 'ca-app-pub-4865595196880143/7598609878',
       })
 
       await interstitial.load()

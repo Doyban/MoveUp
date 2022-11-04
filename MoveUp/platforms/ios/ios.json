@@ -81,7 +81,7 @@
         "parents": {
           "GADApplicationIdentifier": [
             {
-              "xml": "<string>ca-app-pub-xxx~yyy</string>",
+              "xml": "<string>ca-app-pub-4865595196880143~1064049169</string>",
               "count": 1
             }
           ],
@@ -183,7 +183,7 @@
   },
   "installed_plugins": {
     "admob-plus-cordova": {
-      "APP_ID_IOS": "ca-app-pub-xxx~yyy",
+      "APP_ID_IOS": "ca-app-pub-4865595196880143~1064049169",
       "USAGE": "This identifier will be used to deliver personalized ads to you.",
       "DISABLESDKCRASHREPORTING": "false",
       "PACKAGE_NAME": "com.doyban.moveup"

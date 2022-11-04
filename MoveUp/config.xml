@@ -24,6 +24,12 @@
             <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-4865595196880143~2862626271" />
         </config-file>
     </platform>
+    <widget>
+        <platform name="ios">
+            <preference name="deployment-target" value="12.0" />
+            <preference name="SwiftVersion" value="5.3" />
+        </platform>
+    </widget>
     <feature name="FacebookConnectPlugin">
         <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
     </feature>
