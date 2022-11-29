@@ -1,6 +1,6 @@
-#if canImport(AppTrackingTransparency)
-    import AppTrackingTransparency
-#endif
+// #if canImport(AppTrackingTransparency)
+//     import AppTrackingTransparency
+// #endif
 import GoogleMobileAds
 
 @objc(AMBPlugin)
@@ -66,9 +66,9 @@ class AMBPlugin: CDVPlugin {
         let ctx = AMBContext(command)
 
         if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                ctx.resolve(status.rawValue)
-            })
+            // ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+            //     ctx.resolve(status.rawValue)
+            // })
         } else {
             ctx.resolve(false)
         }

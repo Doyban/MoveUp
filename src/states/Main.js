@@ -92,7 +92,7 @@ export default class Main extends Phaser.State {
     this._checkMusicState();
 
     // Create mobile controls.
-    if (!Phaser.Device.desktop) {
+    if (!Phaser.Device.desktop || navigator.maxTouchPoints && navigator.maxTouchPoints > 2) {
       this.createVirtualJoystick();
       this.createJumpButton();
       this.scaleVirtualJoyStickIfNotIphone(); // Scale virtual joystick if this is not iphone.
