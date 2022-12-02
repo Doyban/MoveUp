@@ -44,6 +44,7 @@
 		AF405A8B9C1946A4A89D9704 /* AMBCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA7BF8A55B4B30B6159B81 /* AMBCore.swift */; };
 		AFA609A8678B4D1C9C6D54D6 /* CDVPluginResult+CULPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC4097B7B344D0CB4239921 /* CDVPluginResult+CULPlugin.m */; };
 		B3C46AEC861F4CF29730932D /* MoveUp.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C0B20F5688444F6A9D3C66B7 /* MoveUp.entitlements */; };
+		BA2BF05E2939087A002EB1C0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2BF05D2939087A002EB1C0 /* StoreKit.framework */; };
 		BA4B4C062912C6DF0047859D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4B4C052912C6DF0047859D /* FBSDKCoreKit.framework */; };
 		BA4B4C082912C6DF0047859D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4B4C072912C6DF0047859D /* FBSDKLoginKit.framework */; };
 		BA4B4C0A2912C6DF0047859D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4B4C092912C6DF0047859D /* FBSDKShareKit.framework */; };
@@ -54,7 +55,6 @@
 		E38B7D33A3274F029397A0AA /* AMBAppOpenAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1797994F9DD4C4BB1169055 /* AMBAppOpenAd.swift */; };
 		EBCDE9229AD14E458112D6ED /* CDVWKWebViewFileXhr.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E24FE05E2E4928B170C312 /* CDVWKWebViewFileXhr.m */; };
 		EDB653669F86449CB852CC59 /* AMBRewardedInterstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9438C9E0575043FF93E60E50 /* AMBRewardedInterstitial.swift */; };
-		F505708CCDFC4A30AAADE13B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4A345BD9764F46B62085D3 /* StoreKit.framework */; };
 		F68C8A469C444038B7335054 /* CULConfigJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B3B1532F1B4925AC6D53FE /* CULConfigJsonParser.m */; };
 		F739D3AB969B402E92376689 /* CDVWKInAppBrowserUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A06C854549464E3FA536B0CB /* CDVWKInAppBrowserUIDelegate.m */; };
 		F829173D94B64184848A6A0C /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = B111501C24D24D45BC742041 /* SKProduct+LocalizedPrice.m */; };
@@ -146,11 +146,11 @@
 		AB9AB2110ACD42A29DE9FB16 /* CDVInvokedUrlCommand+CULPlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "CDVInvokedUrlCommand+CULPlugin.m"; path = "cordova-universal-links-plugin/JS/CDVInvokedUrlCommand+CULPlugin.m"; sourceTree = "<group>"; };
 		ABCB112604A14581BBD822DC /* CULHost.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CULHost.h; path = "cordova-universal-links-plugin/Model/CULHost.h"; sourceTree = "<group>"; };
 		AF14D0C8758246A68BA90740 /* NSString+SSURLEncoding.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "NSString+SSURLEncoding.h"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.h"; sourceTree = "<group>"; };
-		AF4A345BD9764F46B62085D3 /* StoreKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B111501C24D24D45BC742041 /* SKProduct+LocalizedPrice.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "SKProduct+LocalizedPrice.m"; path = "cordova-plugin-purchase/SKProduct+LocalizedPrice.m"; sourceTree = "<group>"; };
 		B765F7951BC84931AAFD3333 /* CULXmlTags.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CULXmlTags.m; path = "cordova-universal-links-plugin/Parser/XML/CULXmlTags.m"; sourceTree = "<group>"; };
 		B856CFBFDCAD481B89BBE404 /* CBTBrowserTab.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CBTBrowserTab.m; path = "cordova-plugin-browsertab/CBTBrowserTab.m"; sourceTree = "<group>"; };
 		B9EA68CA8DC340E582282D62 /* InAppPurchase.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = InAppPurchase.h; path = "cordova-plugin-purchase/InAppPurchase.h"; sourceTree = "<group>"; };
+		BA2BF05D2939087A002EB1C0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BA4B4BEC291292AF0047859D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4B4BEE291292AF0047859D /* FBSDKCoreKit_Basics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit_Basics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4B4BF0291292AF0047859D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,10 +200,10 @@
 				0E13E997548E40A39B7B6AB0 /* AppTrackingTransparency.framework in Frameworks */,
 				8F64A35911AFC2ED51898B91 /* Pods_MoveUp.framework in Frameworks */,
 				59B58D0B2A7A4764A58FE020 /* SafariServices.framework in Frameworks */,
-				F505708CCDFC4A30AAADE13B /* StoreKit.framework in Frameworks */,
 				6181F20FF1544CF7B045A8CD /* Social.framework in Frameworks */,
 				8F2355D1F1C34DC1BF322951 /* MessageUI.framework in Frameworks */,
 				256796F5D27241658009E0AE /* WebKit.framework in Frameworks */,
+				BA2BF05E2939087A002EB1C0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +276,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA2BF05D2939087A002EB1C0 /* StoreKit.framework */,
 				BA4B4C052912C6DF0047859D /* FBSDKCoreKit.framework */,
 				BA4B4C072912C6DF0047859D /* FBSDKLoginKit.framework */,
 				BA4B4C092912C6DF0047859D /* FBSDKShareKit.framework */,
@@ -290,7 +291,6 @@
 				9007C6626A134BFA961D82CD /* AppTrackingTransparency.framework */,
 				F4BA2BF301ECE5D31DBB0351 /* Pods_MoveUp.framework */,
 				BF39AFB2086F4191A385A420 /* SafariServices.framework */,
-				AF4A345BD9764F46B62085D3 /* StoreKit.framework */,
 				04A74E9349324C3BA42213BB /* Social.framework */,
 				860615C22B054F7BA31465B6 /* MessageUI.framework */,
 				D5ACF321B4BD45CEADB98DDB /* WebKit.framework */,
@@ -615,7 +615,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.3.8;
+				CURRENT_PROJECT_VERSION = 1.3.9;
 				DEVELOPMENT_TEAM = 9D3QHQ7CMS;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -626,7 +626,7 @@
 				INFOPLIST_FILE = "MoveUp/MoveUp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 1.3.8;
+				MARKETING_VERSION = 1.3.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.doyban.moveup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -649,7 +649,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 1.3.8;
+				CURRENT_PROJECT_VERSION = 1.3.9;
 				DEVELOPMENT_TEAM = 9D3QHQ7CMS;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MoveUp/MoveUp-Prefix.pch";
@@ -658,7 +658,7 @@
 				INFOPLIST_FILE = "MoveUp/MoveUp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 1.3.8;
+				MARKETING_VERSION = 1.3.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.doyban.moveup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
