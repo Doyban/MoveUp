@@ -92,7 +92,7 @@ export default class Main extends Phaser.State {
     this._checkMusicState();
 
     // Create mobile controls.
-    if (!Phaser.Device.desktop) {
+    if (!Phaser.Device.desktop || navigator.maxTouchPoints && navigator.maxTouchPoints > 2) {
       this.createVirtualJoystick();
       this.createJumpButton();
       this.scaleVirtualJoyStickIfNotIphone(); // Scale virtual joystick if this is not iphone.
@@ -244,7 +244,7 @@ export default class Main extends Phaser.State {
 
     document.addEventListener('deviceready', async () => {
       interstitial = new admob.InterstitialAd({
-        adUnitId: 'ca-app-pub-4865595196880143/6610299599',
+        adUnitId: 'ca-app-pub-4865595196880143/7598609878',
       })
 
       await interstitial.load()

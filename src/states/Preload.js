@@ -60,6 +60,10 @@ export default class Preload extends Phaser.State {
     this.createPlayText();
     this.createUiButtons();
     this.createTitleText();
+
+    // Hide the close button on iOS in main menu.
+    this.closeButton.visible = false;
+    this.closeButtonIcon.visible = false;
   }
 
   /**
@@ -148,7 +152,6 @@ export default class Preload extends Phaser.State {
     this.closeButton.scale.x = this.closeButton.scale.y = this.closeButtonIcon.scale.x = this.closeButtonIcon.scale.y = UI_SCALE_FACTOR;
 
     localStorage.scoreRate = localStorage.scoreRate || 1; // Initialize scoreRate.
-    initAd(); // Initialize AdMob.
   }
 
   /**
@@ -248,9 +251,6 @@ export default class Preload extends Phaser.State {
       // Close Shop with its ShopItems.
       this.shop.show();
       this.isShopOpened = false;
-    } else {
-      // Close the game.
-      navigator.app.exitApp();
     }
   }
 

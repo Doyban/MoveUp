@@ -63,20 +63,19 @@ export class ShopItem {
 
     // Prepare product.
     store.register({
-      id: `scorex${this.multiplier}`,
-      alias: `Score ${this.multiplier}`,
+      id: `com.doyban.moveup.scorex${this.multiplier}`,
+      alias: `Score x${this.multiplier}`,
       type: store.CONSUMABLE
     });
 
     // Purchase product.
-    store.order(`scorex${this.multiplier}`);
-    store.refresh();
-    store.when(`scorex${this.multiplier}`).approved(function (order) {
+    store.order(`com.doyban.moveup.scorex${this.multiplier}`);
+    store.when(`com.doyban.moveup.scorex${this.multiplier}`).approved(function (order) {
       order.finish();
       store.refresh();
 
       // Add extra score and begin the game.
-      localStorage.scoreRate = this.multiplier;
+      localStorage.scoreRate = parseInt(that.multiplier);
       that.game.state.start('ShopState');
     });
   }
